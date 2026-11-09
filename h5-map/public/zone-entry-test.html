@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>区域进入提示验收</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="gameplay/pickaxe.css">
+<link rel="stylesheet" href="gameplay/pickaxe-shop.css">
+<link rel="stylesheet" href="gameplay/trail-shop.css">
+<link rel="stylesheet" href="gameplay/index-ui.css">
+<link rel="stylesheet" href="gameplay/inventory-ui.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+<canvas aria-label="游戏场景" tabindex="0"></canvas>
+<div id="loading" aria-hidden="true"><div class="spinner"></div></div>
+<aside id="zone-qa" style="position:fixed;right:8px;bottom:8px;z-index:99;background:#fffE;padding:10px;font:13px system-ui;max-width:340px"><select id="zone-select" aria-label="区域"></select><button id="enter-zone">进入区域</button><button id="safe-zone">安全区</button><label><input id="pin-zone" type="checkbox">定格提示</label><button id="zone-suite">自动验收</button><output id="zone-result" style="display:block;max-height:140px;overflow:auto;white-space:pre-wrap">等待加载</output></aside><script type="module" src="app.js"></script><script type="module" src="zone-entry-test.js"></script>
+</body>
+</html>

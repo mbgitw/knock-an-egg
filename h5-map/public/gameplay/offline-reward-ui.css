@@ -1,0 +1,19 @@
+@import url('./gcoin-shop-ui.css');
+#pasture-offline{position:fixed;inset:0;z-index:60;user-select:none;backdrop-filter:blur(2px)}
+#pasture-offline[hidden]{display:none!important}
+.offline-stage{position:absolute;left:50%;top:50%;width:1000px;height:641.740629px;transform:translate(-50%,-50%) scale(var(--offline-scale,1));transform-origin:center;isolation:isolate;outline:none}
+.offline-claim-status{position:absolute;z-index:100;left:100px;right:100px;bottom:8px;padding:8px 14px;border:3px solid #000;border-radius:8px;background:#273647;color:#fff;text-align:center;font:700 24px Arial,sans-serif;-webkit-text-stroke:1px #000;paint-order:stroke fill;pointer-events:none}
+.offline-claim-status[hidden]{display:none}
+#pasture-offline .source-gui{position:absolute;box-sizing:border-box;margin:0;padding:0;border:0;pointer-events:none;isolation:isolate;font:inherit;color:inherit}
+#pasture-offline .source-text{display:block;width:100%;line-height:1.06;pointer-events:none;flex:none}
+#pasture-offline .source-image{position:absolute;inset:0;pointer-events:none;background-position:center}
+#pasture-offline button.source-gui{touch-action:manipulation;cursor:pointer}
+#pasture-offline button[aria-disabled=true]{cursor:default}
+#pasture-offline button:focus-visible{outline:3px solid white;outline-offset:5px}
+#pasture-offline button:not([aria-disabled=true]):hover{filter:brightness(1.1)}
+#pasture-offline [data-source-name=Shine]{opacity:.25}
+
+#pasture-offline .offline-price .source-text{display:flex;align-items:center;justify-content:center;gap:10px}
+.offline-gcoin{width:.9em;height:.9em;flex:none}
+#pasture-offline [data-source-name=Bevel] .source-image{background:none!important;border:5px solid transparent;border-image:url('./inventory-ui/bevel.png') 18 fill stretch;opacity:.6!important}
+#pasture-offline [data-source-name=Amount] .source-text{filter:drop-shadow(3px 0 #183600) drop-shadow(-3px 0 #183600) drop-shadow(0 3px #183600) drop-shadow(0 -3px #183600)!important}

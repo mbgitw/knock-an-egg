@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>背包蛋卡片验收（内存数据）</title><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script><style>body{margin:0;background:#52754a;font:16px sans-serif;color:white}header{padding:20px}#pickaxe-ui{display:none}</style><header>背包蛋卡片验收 · 内存样本，不读写玩家存档</header><canvas hidden></canvas><div id="pickaxe-ui"><div class="pickaxe-hotbar"></div></div><script type="module">
+import {BackpackUI} from './gameplay/backpack-ui.js';
+const account={data:{mergeEggs:['Chicken','Cat','AngelAnky'].map((name,i)=>({id:'merge:qa-'+i,name,...(i===2?{paidType:'FallenAngel'}:{})}))},save:()=>true};
+const pickaxes={progress:{data:{pets:[],hotbar:[]},account},ui:document.querySelector('#pickaxe-ui')};
+const ui=new BackpackUI({pickaxes,player:{},scene:{},canvas:document.querySelector('canvas')});
+ui.mergeSystem={held:null,equip(id){this.held=id;ui.render();}};
+ui.category='Eggs';ui.opened=true;ui.panel.hidden=false;ui.render();
+</script></html>

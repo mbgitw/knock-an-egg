@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "room": {
+    "room_id": "local-room",
+    "room_name": "local-room",
+    "game_id": "local-game",
+    "tick_rate": 20,
+    "max_players": 2,
+    "entry_kind": "direct",
+    "activity_id": "local-activity",
+    "match_key": "local",
+    "match_mode": "room",
+    "room_type": "default"
+  },
+  "actors": [
+    {
+      "player_id": "player-1",
+      "seat_id": "seat-1",
+      "team_id": "team-1"
+    },
+    {
+      "player_id": "player-2",
+      "seat_id": "seat-2",
+      "team_id": "team-2"
+    }
+  ],
+  "bots": []
+}

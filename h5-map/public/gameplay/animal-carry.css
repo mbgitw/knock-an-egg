@@ -1,0 +1,20 @@
+#animal-carry-ui{position:fixed;inset:0;pointer-events:none;z-index:6;user-select:none}
+#animal-carry-ui [hidden]{display:none!important}
+#animal-overheads{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.animal-overhead{position:absolute;left:0;top:0;overflow:visible;transform-origin:0 0}
+.animal-text{font:900 67.5px EggOriginal,Montserrat,sans-serif;text-anchor:middle;dominant-baseline:central;paint-order:stroke fill;stroke:#323232;stroke-width:11.5px;stroke-linejoin:round}
+@font-face{font-family:AnimalPrompt;src:url('./animal-carry/ComicNeue-Angular-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+#animal-pickup{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:0;min-width:193px;height:72px;padding:0 24px 0 0;background:transparent;border:0;border-radius:8px;color:white;font:700 19px AnimalPrompt,system-ui;pointer-events:auto;touch-action:none;text-align:left;text-shadow:1px 1px 2px #282828}
+#animal-pickup:before{content:'';position:absolute;z-index:-1;left:-28%;top:-76%;width:156%;height:253%;background:radial-gradient(ellipse,#0009,transparent 68%);pointer-events:none}
+#animal-pickup>span:last-child{display:flex;flex-direction:column-reverse;gap:0;transition:opacity .2s}
+#animal-pickup small{display:block;font-size:14px;font-weight:700;color:#b2b2b2;line-height:19px}
+#animal-pickup b{font-weight:700;line-height:20px}
+#animal-pickup.holding>span:last-child{opacity:0}
+.pickup-key{position:relative;width:72px;height:72px;display:grid;place-items:center;flex-shrink:0}
+.pickup-key:before{content:'';position:absolute;width:48px;height:48px;border-radius:50%;background:#a3a2a580}
+.pickup-key svg{position:absolute;inset:7px;width:58px;height:58px;transform:rotate(-90deg);fill:none;stroke:white;stroke-width:4;stroke-dasharray:151;stroke-dashoffset:151}
+.pickup-key kbd{position:relative;display:grid;place-items:center;width:28px;height:30px;border:0;background:url('./animal-carry/key_single.png') center/contain no-repeat;font:700 14px AnimalPrompt,system-ui}
+#animal-drop{position:absolute;bottom:max(38px,max(env(safe-area-inset-bottom),var(--host-safe-bottom,0px)));left:50%;transform:translateX(-50%);pointer-events:auto;touch-action:none;background:linear-gradient(#ff5d47,#dc2720);border:3px solid #151515;border-radius:8px;box-shadow:inset 0 0 0 2px #ffb39b;color:white;padding:10px 30px;font:900 25px EggOriginal,system-ui;text-shadow:2px 2px #111}
+#animal-drop kbd{font:700 18px system-ui;border:2px solid white;border-radius:4px;padding:0 5px;margin-right:8px}
+body[data-carrying-animal="true"] #pickaxe-ui,body[data-carrying-animal="true"] #game-index-ui,body[data-carrying-animal="true"] #game-inventory-ui,body[data-carrying-animal="true"] #game-gcoin-shop,body[data-carrying-animal="true"] #trail-ui,body[data-carrying-animal="true"] #training-ui>:not(.stats){display:none!important}
+@media(pointer:coarse){#animal-drop kbd{display:none}.pickup-key kbd{font-size:0;background-image:url('./animal-carry/TouchTapIcon.png')}#animal-pickup{min-width:160px}}

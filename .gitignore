@@ -1,0 +1,30 @@
+# Installed dependencies and generated Python cache
+node_modules/
+__pycache__/
+*.py[cod]
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+
+# Rebuildable bundles, local Online tool binaries and scratch logs
+/h5-map/build/
+/h5-map/.builda-online/
+/h5-map/*.log
+/h5-map/*test-results*.txt
+/outputs/
+
+# Local visual checks
+/preview-*.png
+/h5-map/preview*.png
+/h5-map/preview*.jpg
+/h5-map/*-contact.png
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+desktop.ini

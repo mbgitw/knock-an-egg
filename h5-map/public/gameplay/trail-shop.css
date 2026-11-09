@@ -1,0 +1,18 @@
+#trail-ui{position:fixed;inset:0;pointer-events:none;color:#fff;z-index:22;user-select:none}
+#trail-ui [hidden]{display:none!important}.trail-overlay{position:absolute;inset:0;display:grid;place-items:center;pointer-events:auto}
+.trail-panel{--shop-width:min(65vw,121.5444vh);width:var(--shop-width);height:calc(var(--shop-width)/1.86991441);position:relative;background:#323232;box-shadow:0 0 0 3px #000,inset 0 0 0 1.5px #ffffff1a;container-type:size;animation:original-shop-open .18s cubic-bezier(.165,.84,.44,1)}
+.trail-panel:before,.trail-panel header:before{content:"";position:absolute;inset:0;background:var(--studs-image);background-size:50px;opacity:.25;pointer-events:none}
+.trail-panel header{position:absolute;top:-8.75%;width:100%;height:17.5%;background:linear-gradient(90deg,#0091ff,#00fbff 50.4318%,#009dff);box-shadow:0 0 0 3px #000,inset 0 0 0 2px #4b4b4b;z-index:3}
+.trail-panel h2{position:absolute;left:2.5%;top:14.142%;width:46.2054%;height:71.716%;margin:0;font-family:OriginalGotham,sans-serif;font-weight:900;line-height:1;display:flex;align-items:center;white-space:nowrap;-webkit-text-stroke:.065em #000;paint-order:stroke fill;text-shadow:0 .05em #000}
+.trail-header-shine{position:absolute;inset:1% 0;pointer-events:none;overflow:hidden;background:linear-gradient(120deg,transparent 43%,#ffffff38 43%,#ffffff38 47%,transparent 47%,transparent 53%,#ffffff38 53%,#ffffff38 59%,transparent 59%,transparent 65%,#ffffff38 65%,#ffffff38 69%,transparent 69%);mask-image:linear-gradient(transparent,#000,transparent)}
+#trail-ui .trail-close{position:absolute;left:95%;top:50%;height:80%;aspect-ratio:1;transform:translate(-50%,-50%);padding:0;border:0;border-radius:0;background:linear-gradient(0deg,#bc0000,#f00);box-shadow:0 0 0 3px #440000,inset 0 0 0 1.5px #f00;color:#fff;font:800 9cqh/1 OriginalGotham,sans-serif;-webkit-text-stroke:3px #323232bf;paint-order:stroke fill;cursor:pointer}
+.trail-grid{position:absolute;top:8.75%;width:100%;height:89.049%;display:flex;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#ffffffbf transparent;touch-action:pan-x;overscroll-behavior:contain}
+.trail-art{position:absolute;inset:0;pointer-events:none;z-index:2}.trail-art img{width:100%;height:100%;object-fit:contain}
+#trail-ui .original-power strong{background:linear-gradient(0deg,#00ff00,#88ff00);background-clip:text}
+#trail-ui .original-card-inner button{position:absolute;top:83.75%;height:12.5%;padding:0;border:0;border-radius:1px;z-index:3;color:#fff;box-shadow:0 0 0 3px var(--purchase-border,#0c2f10),inset 0 0 0 2px var(--purchase-inner,#7aff15);background:var(--purchase,linear-gradient(0deg,#00b400,#a6ff00));font-family:OriginalRubik,sans-serif;font-weight:800;line-height:1;cursor:pointer}
+#trail-ui .original-card-inner button:before{content:"";position:absolute;inset:0;background:var(--studs-image);background-size:40px;opacity:.25;pointer-events:none}
+#trail-ui button.original-gcoin{left:65%;width:30%;--purchase:linear-gradient(0deg,#bf00ff,#ff72ff);--purchase-border:#323232;--purchase-inner:#ff86fd}
+#trail-ui button:disabled{cursor:default}#trail-ui button:hover:not(:disabled){filter:brightness(1.1)}#trail-ui button:focus-visible{outline:3px solid white;outline-offset:4px}
+#training-ui #speed-value.trail-speed-color{background:none;color:var(--trail-speed-color,#fff);-webkit-text-fill-color:currentColor}
+#trail-speed-mult{font:800 clamp(12px,1.1vw,20px) OriginalGotham,sans-serif;color:#ffe242;margin-left:8px;white-space:nowrap;-webkit-text-stroke:1px #000;paint-order:stroke fill}
+@media(max-width:600px) and (orientation:portrait){.trail-panel{--shop-width:94vw}.trail-grid .original-pickaxe-card{flex-basis:50%}.trail-panel{height:calc(var(--shop-width)/1.4)}}

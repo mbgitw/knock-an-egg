@@ -1,0 +1,4 @@
+interface:
+  display_name: "Builda Online Diagnostics"
+  short_description: "Query important game alerts and logs with optional Room filtering to diagnose online server issues"
+  default_prompt: "Use $builda-online-diagnostics to first determine whether the current failure happened at Gateway, Ticket, the first connection, or after entering the Room, then query important game alerts and correlate the returned Rooms with online user logs and exit reasons."

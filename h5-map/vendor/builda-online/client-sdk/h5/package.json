@@ -1,0 +1,28 @@
+{
+  "name": "@cysj/online-h5",
+  "version": "0.18.0",
+  "description": "Builda Online H5 client SDK",
+  "type": "module",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test --test-timeout=60000 tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

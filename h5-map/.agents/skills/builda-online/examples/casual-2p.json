@@ -1,0 +1,23 @@
+{
+  "room": {
+    "room_id": "local-casual-2p",
+    "room_name": "MOBA casual matchmaking local lifecycle",
+    "game_id": "star-grab-demo",
+    "tick_rate": 20,
+    "max_players": 2,
+    "entry_kind": "matchmaking",
+    "activity_id": "local-casual-2p",
+    "match_key": "casual-2p",
+    "match_mode": "pool",
+    "room_route": "star-grab",
+    "room_type": "authoritative"
+  },
+  "actors": [
+    { "player_id": "player-1", "seat_id": "seat-1", "team_id": "team-1" },
+    { "player_id": "player-2", "seat_id": "seat-2", "team_id": "team-2" }
+  ],
+  "launch_context": {
+    "example": "moba_casual",
+    "localOnly": true
+  }
+}

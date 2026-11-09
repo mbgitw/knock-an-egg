@@ -1,0 +1,548 @@
+// @ts-nocheck
+// Generated from public/gameplay/config.js; run node tools/build-online-rules.mjs.
+export const CONFIG = {
+  "cooldown": 0.5,
+  "sweepDuration": 0.45,
+  "hitRange": 8,
+  "padding": 0.75,
+  "respawnSeconds": 15,
+  "tiers": [
+    {
+      "tier": 1,
+      "name": "木镐",
+      "originalName": "Pickaxe",
+      "rarity": "Common",
+      "damage": 1,
+      "price": "0",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/01.json"
+    },
+    {
+      "tier": 2,
+      "name": "石镐",
+      "originalName": "Stone Pickaxe",
+      "rarity": "Common",
+      "damage": 4,
+      "price": "80",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/02.json"
+    },
+    {
+      "tier": 3,
+      "name": "铁镐",
+      "originalName": "Iron Pickaxe",
+      "rarity": "Uncommon",
+      "damage": 15,
+      "price": "800",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/03.json"
+    },
+    {
+      "tier": 4,
+      "name": "金镐",
+      "originalName": "Golden Pickaxe",
+      "rarity": "Uncommon",
+      "damage": 60,
+      "price": "20000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/04.json"
+    },
+    {
+      "tier": 5,
+      "name": "钻石镐",
+      "originalName": "Diamond Pickaxe",
+      "rarity": "Rare",
+      "damage": 250,
+      "price": "160000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/05.json"
+    },
+    {
+      "tier": 6,
+      "name": "草莓镐",
+      "originalName": "Strawberry Pickaxe",
+      "rarity": "Rare",
+      "damage": 1000,
+      "price": "1200000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/06.json"
+    },
+    {
+      "tier": 7,
+      "name": "仙人掌镐",
+      "originalName": "Cactus Pickaxe",
+      "rarity": "Epic",
+      "damage": 4000,
+      "price": "6000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/07.json"
+    },
+    {
+      "tier": 8,
+      "name": "闪电镐",
+      "originalName": "Lightning Pickaxe",
+      "rarity": "Legendary",
+      "damage": 15000,
+      "price": "40000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/08.json"
+    },
+    {
+      "tier": 9,
+      "name": "糖果镐",
+      "originalName": "Candy Pickaxe",
+      "rarity": "Mythic",
+      "damage": 60000,
+      "price": "400000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/09.json"
+    },
+    {
+      "tier": 10,
+      "name": "彩虹镐",
+      "originalName": "Rainbow Pickaxe",
+      "rarity": "Mythic",
+      "damage": 250000,
+      "price": "2800000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/10.json"
+    },
+    {
+      "tier": 11,
+      "name": "水晶镐",
+      "originalName": "Crystal Pickaxe",
+      "rarity": "Divine",
+      "damage": 1000000,
+      "price": "20000000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/11.json"
+    },
+    {
+      "tier": 12,
+      "name": "恶魔镐",
+      "originalName": "Demon Pickaxe",
+      "rarity": "Divine",
+      "damage": 4000000,
+      "price": "120000000000",
+      "grip": {
+        "X": "-0.188272476",
+        "Y": "-1.38504028",
+        "Z": "-0.615814209",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/12.json"
+    },
+    {
+      "tier": 13,
+      "name": "黑客镐",
+      "originalName": "Hacker Pickaxe",
+      "rarity": "Cosmic",
+      "damage": 15000000,
+      "price": "1200000000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/13.json"
+    },
+    {
+      "tier": 14,
+      "name": "UFO镐",
+      "originalName": "Ufo Pickaxe",
+      "rarity": "Cosmic",
+      "damage": 60000000,
+      "price": "12000000000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/14.json"
+    },
+    {
+      "tier": 15,
+      "name": "秘密镐",
+      "originalName": "Secret Pickaxe",
+      "rarity": "Secret",
+      "damage": 250000000,
+      "price": "80000000000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/15.json"
+    },
+    {
+      "tier": 16,
+      "name": "酷炫镐",
+      "originalName": "Cool Pickaxe",
+      "rarity": "Secret",
+      "damage": 1000000000,
+      "price": "600000000000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/16.json"
+    },
+    {
+      "tier": 17,
+      "name": "银河镐",
+      "originalName": "Galaxy Pickaxe",
+      "rarity": "Celestial",
+      "damage": 5000000000,
+      "price": "4000000000000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/17.json"
+    },
+    {
+      "tier": 18,
+      "name": "天界镐",
+      "originalName": "Celestial Pickaxe",
+      "rarity": "Celestial",
+      "damage": 25000000000,
+      "price": "20000000000000000",
+      "grip": {
+        "X": "-1.13686838e-13",
+        "Y": "-1.38504755",
+        "Z": "0",
+        "R00": "0",
+        "R01": "0",
+        "R02": "-1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "0",
+        "R20": "1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/18.json"
+    },
+    {
+      "tier": 19,
+      "name": "科幻镐",
+      "originalName": "Sci Fi Pickaxe",
+      "rarity": "Void",
+      "damage": 75000000000,
+      "price": "75000000000000000",
+      "grip": {
+        "X": "0.265311956",
+        "Y": "-1.39096034",
+        "Z": "-0.018771518",
+        "R00": "0",
+        "R01": "0",
+        "R02": "1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "-0",
+        "R20": "-1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/19.json"
+    },
+    {
+      "tier": 20,
+      "name": "附魔镐",
+      "originalName": "Enchanted Pickaxe",
+      "rarity": "Omega",
+      "damage": 250000000000,
+      "price": "200000000000000000",
+      "grip": {
+        "X": "0.280869573",
+        "Y": "-1.5511632",
+        "Z": "0.011391676",
+        "R00": "0",
+        "R01": "0",
+        "R02": "1",
+        "R10": "0",
+        "R11": "1",
+        "R12": "-0",
+        "R20": "-1",
+        "R21": "0",
+        "R22": "0"
+      },
+      "url": "./model-check/pickaxes/20.json"
+    }
+  ],
+  "pool": [
+    {
+      "name": "Chicken",
+      "rarity": "Common",
+      "weight": 46,
+      "cash": 1,
+      "modelId": "animal_z01_01",
+      "referenceWeightKg": 94.610592,
+      "sellValue": 60
+    },
+    {
+      "name": "Cat",
+      "rarity": "Common",
+      "weight": 30,
+      "cash": 2,
+      "modelId": "animal_z01_02",
+      "referenceWeightKg": 103.546037,
+      "sellValue": 120
+    },
+    {
+      "name": "Bat",
+      "rarity": "Uncommon",
+      "weight": 14,
+      "cash": 10,
+      "modelId": "animal_z01_03",
+      "referenceWeightKg": 102.757615,
+      "sellValue": 600
+    },
+    {
+      "name": "Anteater",
+      "rarity": "Uncommon",
+      "weight": 6.5,
+      "cash": 13,
+      "modelId": "animal_z01_04",
+      "referenceWeightKg": 127.198685,
+      "sellValue": 780
+    },
+    {
+      "name": "Badger",
+      "rarity": "Rare",
+      "weight": 2.3,
+      "cash": 35,
+      "modelId": "animal_z01_05",
+      "referenceWeightKg": 109.327795,
+      "sellValue": 2100
+    },
+    {
+      "name": "Parrot",
+      "rarity": "Rare",
+      "weight": 0.85,
+      "cash": 45,
+      "modelId": "animal_z01_06",
+      "referenceWeightKg": 105.911302,
+      "sellValue": 2700
+    },
+    {
+      "name": "GoldenRetriver",
+      "rarity": "Epic",
+      "weight": 0.3,
+      "cash": 145,
+      "modelId": "animal_z01_07",
+      "referenceWeightKg": 141.653081,
+      "sellValue": 9060
+    },
+    {
+      "name": "Bear",
+      "rarity": "Legendary",
+      "weight": 0.05,
+      "cash": 1800,
+      "modelId": "animal_z01_08",
+      "referenceWeightKg": 216.553133,
+      "sellValue": 138660
+    }
+  ]
+};
+
+function roomRandomRequired():number{throw Error("Room必须注入可恢复随机源");}
+function roomTimeRequired():number{throw Error("Room必须注入可信时间");}

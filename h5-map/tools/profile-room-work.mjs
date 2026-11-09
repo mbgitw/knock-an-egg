@@ -1,0 +1,53 @@
+import {build} from 'esbuild';
+import {performance} from 'node:perf_hooks';
+import {encodeMotion} from '../public/online/protocol.js';
+
+for (const name of ['guards', 'eggs', 'world', 'economy', 'room']) {
+  await build({entryPoints:[`server/game/${name}.ts`],bundle:true,format:'esm',platform:'node',packages:'external',outfile:`build/profile-${name}.mjs`});
+}
+const guardsModule=await import('../build/profile-guards.mjs');
+const eggsModule=await import('../build/profile-eggs.mjs');
+const worldModule=await import('../build/profile-world.mjs');
+const economyModule=await import('../build/profile-economy.mjs');
+let seed=17;
+const random=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);
+const measure=(fn,n=600)=>{const start=performance.now();for(let i=0;i<n;i++)fn(i);return +(performance.now()-start).toFixed(1);};
+const players=Array.from({length:7},(_,i)=>({id:`p${i}`,position:{x:-150+i*12,y:1,z:20+i*5},power:1,carrying:null,safe:false,disabled:false}));
+const initial=guardsModule.createGuards(random,()=>{});
+const initialState=guardsModule.saveGuards(initial);
+for(let i=0;i<100;i++)guardsModule.updateGuards(initial,players,.1);
+let guardState=guardsModule.saveGuards(initial),guardBrains;
+const guardRestore=measure(()=>{guardBrains=guardsModule.createGuards(random,()=>{},guardState);});
+const guardUpdate=measure(()=>{guardsModule.updateGuards(guardBrains,players,.1);});
+const guardSave=measure(()=>{guardState=guardsModule.saveGuards(guardBrains);});
+const guardCycle=measure(()=>{const brains=guardsModule.createGuards(random,()=>{},guardState);guardsModule.updateGuards(brains,players,.1);guardState=guardsModule.saveGuards(brains);});
+const egg=eggsModule.createEggEngine(random,()=>{});egg.initialize(null,0);
+let eggState=[...egg.slots.values()],titanic={nextAt:1800,retryAt:0,pending:null,eggs:[]},engine;
+const eggRestore=measure(()=>{engine=eggsModule.withTitanic(eggsModule.restoreEggEngine(eggState,random,()=>{}),titanic,random);});
+const eggUpdate=measure(i=>{engine.update(i*.1);});
+const eggSave=measure(()=>{titanic=eggsModule.saveTitanic(engine);});
+const eggCycle=measure(i=>{const restored=eggsModule.withTitanic(eggsModule.restoreEggEngine(eggState,random,()=>{}),titanic,random);restored.update(i*.1);titanic=eggsModule.saveTitanic(restored);});
+const state=worldModule.createWorld();const playerStates=Array.from({length:7},(_,i)=>{const p=worldModule.join(state,`p${i}`,`s${i}`);p.loaded=p.active=true;return p;});
+const economy=measure(i=>{for(const p of playerStates)economyModule.tickEconomy(state,p,.1,1000+i*100);});
+const trainingStringify=measure(()=>{for(const p of playerStates)JSON.stringify(p.training);});
+const {PastureRoom}=await import('../build/profile-room.mjs');
+state.eggs=eggState;state.guards=initialState;
+const initialRoomState=JSON.parse(JSON.stringify(state));
+let sends=0,bytes=0;
+const makeRoom=(snapshot)=>{const room=new PastureRoom();room.state=JSON.parse(JSON.stringify(snapshot));
+ room.random=random;room.unixTimeMillis=()=>1000n+BigInt(room.state.elapsed);
+ room.sendToUserJson=(_id,_op,payload)=>{sends++;bytes+=JSON.stringify(payload).length;};
+ room.sendToUserOn=(_channel,_id,_op,payload)=>{sends++;bytes+=payload.length;};
+ room.log=()=>{};room.save=()=>{};return room;};
+const room=makeRoom(initialRoomState);
+const roomTick=measure(()=>{for(const p of Object.values(room.state.players))p.lastMove=room.state.elapsed;room.onTick(100);});
+const roomTickSends=sends,roomTickBytes=bytes;sends=0;bytes=0;
+const room20=makeRoom(initialRoomState);for(const p of Object.values(room20.state.players))p.motionV2=true;
+const roomTick20Hz=measure(()=>{for(const p of Object.values(room20.state.players))p.lastMove=room20.state.elapsed;room20.onTick(50);},1200);
+const ingressRoom=makeRoom(initialRoomState);
+const clients=Array.from({length:7},(_,k)=>({userId:`p${k}`,seatId:`s${k}`}));
+const packets=Array.from({length:1200},(_,i)=>clients.map((client,k)=>{
+  const p=ingressRoom.state.players[client.userId];return encodeMotion({...p.position,sequence:i+1,sampleTime:(i+1)*50,vx:18,vy:0,vz:0,epoch:0});
+}));
+const motionIngress20Hz=measure(i=>{ingressRoom.state.elapsed+=50;for(let k=0;k<7;k++)ingressRoom.receiveMotion(clients[k],packets[i][k]);},1200);
+console.log(JSON.stringify({scenario:'60 simulated seconds, 7 players, 10 guards, 230 eggs; local Node timing, no WASM fuel',ms:{guardRestore,guardUpdate,guardSave,guardCycle,eggRestore,eggUpdate,eggSave,eggCycle,economy,trainingStringify,roomTick10Hz:roomTick,roomTick20Hz,motionIngress20Hz},output:{legacy10Hz:{sends:roomTickSends,bytes:roomTickBytes},motionV2_20Hz:{sends,bytes}},guardStateBytes:JSON.stringify(guardState).length,eggStateBytes:JSON.stringify(eggState).length},null,2));

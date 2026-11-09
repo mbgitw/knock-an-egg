@@ -1,0 +1,6 @@
+@font-face{font-family:EggOriginal;src:url('./egg-presentation/font.ttf') format('truetype');font-weight:900;font-display:swap}
+#egg-billboards{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1;user-select:none}
+.egg-billboard{position:absolute;left:0;top:0;overflow:visible;transform-origin:0 0;pointer-events:none}
+.egg-billboard[hidden]{display:none!important}
+.egg-text{font-family:EggOriginal,Montserrat,sans-serif;font-weight:900;text-anchor:middle;dominant-baseline:central;paint-order:stroke fill;stroke:#000;stroke-linejoin:round;stroke-linecap:round}
+#pickaxe-ui{z-index:5}

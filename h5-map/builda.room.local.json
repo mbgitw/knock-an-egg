@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "room": {
+    "room_id": "local-pasture",
+    "room_name": "七人牧场",
+    "game_id": "GD:409930:13",
+    "tick_rate": 20,
+    "max_players": 7,
+    "match_key": "pasture-world",
+    "room_route": "pasture-world",
+    "room_type": "authoritative",
+    "match_mode": "room",
+    "room_origin": "public_match"
+  },
+  "actors": [
+    {
+      "player_id": "player-1",
+      "seat_id": "seat-1",
+      "team_id": "pasture"
+    },
+    {
+      "player_id": "player-2",
+      "seat_id": "seat-2",
+      "team_id": "pasture"
+    },
+    {
+      "player_id": "player-3",
+      "seat_id": "seat-3",
+      "team_id": "pasture"
+    },
+    {
+      "player_id": "player-4",
+      "seat_id": "seat-4",
+      "team_id": "pasture"
+    },
+    {
+      "player_id": "player-5",
+      "seat_id": "seat-5",
+      "team_id": "pasture"
+    },
+    {
+      "player_id": "player-6",
+      "seat_id": "seat-6",
+      "team_id": "pasture"
+    },
+    {
+      "player_id": "player-7",
+      "seat_id": "seat-7",
+      "team_id": "pasture"
+    }
+  ],
+  "bots": [],
+  "launch_context": {}
+}

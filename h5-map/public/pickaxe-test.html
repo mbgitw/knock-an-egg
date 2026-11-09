@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>镐子集成验收</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="gameplay/pickaxe.css">
+<link rel="stylesheet" href="gameplay/pickaxe-shop.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<link rel="stylesheet" href="gameplay/trail-shop.css"></head>
+<body>
+<canvas aria-label="游戏场景" tabindex="0"></canvas>
+<div id="loading" aria-hidden="true"><div class="spinner"></div></div>
+<script type="module" src="app.js"></script>
+<div id="qa" style="position:fixed;left:12px;top:12px;z-index:100;display:flex;gap:5px"><button id="qa-grip">握持侧面</button><button id="qa-grip-crystal">水晶镐握持</button><button id="qa-shop">商店前</button><button id="qa-enter-shop">进入商店区域</button><button id="qa-egg">可用原蛋前</button><button id="qa-away">离开目标</button><button id="qa-cash">测试现金</button><button id="qa-reload">重载账号快照</button></div>
+<script type="module">
+import {TreadmillState} from './treadmill-state.js';
+const wait=setInterval(()=>{if(!window.game?.pickaxes)return;clearInterval(wait);const g=window.game,s=g.pickaxes;
+function move(p,yaw){g.player.motor.teleport(p);g.player.actor.rotation.y=yaw;g.player.motor.grounded=true;g.player.keys.clear();}
+function shopMove(inside){s.close();const p=g.player.motor.position.clone().set(inside?-61:-53,.5,inside?61:57);move(p,-Math.PI/3);g.controls.target.copy(p).add({x:0,y:3,z:0});g.orbitCamera.position.copy(p).add({x:18,y:11,z:-10.3923});g.player.previousTarget.copy(g.controls.target);}
+function gripView(){s.close();const p=g.player.motor.position.clone().set(-48,.5,24);move(p,0);g.controls.target.copy(p).add({x:0,y:3,z:0});g.orbitCamera.position.copy(p).add({x:-10,y:5,z:3});g.player.previousTarget.copy(g.controls.target);}
+document.querySelector('#qa-grip').onclick=gripView;
+document.querySelector('#qa-grip-crystal').onclick=async()=>{g.account.creditCash('900000000000000000');await s.changeTier(11,!s.progress.data.owned.includes(11));gripView();};
+document.querySelector('#qa-shop').onclick=()=>shopMove(false);
+document.querySelector('#qa-enter-shop').onclick=()=>shopMove(true);
+document.querySelector('#qa-egg').onclick=()=>{const e=s.eggs.eggs.find(e=>e.life.alive);if(!e)return;const p=e.center.clone();p.z-=3.6;p.y=.5;move(p,0);g.controls.target.copy(p).add({x:0,y:3,z:0});g.orbitCamera.position.copy(p).add({x:8,y:8,z:-13});g.player.previousTarget.copy(g.controls.target);};
+document.querySelector('#qa-away').onclick=()=>{const p=g.player.motor.position.clone();p.z-=15;move(p,0);};
+document.querySelector('#qa-cash').onclick=()=>{g.account.creditCash('900000000000000000');s.refresh();};
+document.querySelector('#qa-reload').onclick=()=>{const raw=JSON.stringify(g.account.data);const loaded=new TreadmillState({storage:{getItem:()=>raw,setItem:()=>{}}});g.account.data=loaded.data;s.refresh();document.querySelector('#qa-reload').textContent='快照已恢复';};
+},100);
+</script></body>
+</html>

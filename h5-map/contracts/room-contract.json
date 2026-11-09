@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "room_contract_version": "0.12.0",
+  "wit_package": "cysj:room@0.11.0",
+  "room_data_protocol_version": "1.0.0",
+  "room_data_frame": {
+    "magic": "CYR1",
+    "header_bytes": 14,
+    "max_frame_bytes": 65535,
+    "type_length": "u16_be",
+    "sequence": "u64_be",
+    "payload": "opaque_bytes",
+    "channel_source": "webrtc_data_channel"
+  },
+  "lifecycle": [
+    "create",
+    "join",
+    "disconnect",
+    "reconnect",
+    "message",
+    "tick",
+    "checkpoint",
+    "restore",
+    "activated",
+    "leave",
+    "dispose"
+  ],
+  "channels": [
+    "control_reliable",
+    "game_reliable",
+    "state_unreliable"
+  ],
+  "host_commands": [
+    "log",
+    "broadcast",
+    "send",
+    "send_to_user",
+    "set_state",
+    "patch_state",
+    "lock_room",
+    "release_room",
+    "close_room",
+    "random_u64",
+    "unix_time_millis"
+  ]
+}

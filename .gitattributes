@@ -1,0 +1,5 @@
+# Preserve exact asset and build-input bytes across platforms.
+* -text
+h5-map/public/obj-map/world.glb filter=lfs diff=lfs merge=lfs -text
+h5-map/public/gameplay/guards/obj-parts.json filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text

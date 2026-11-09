@@ -1,0 +1,1924 @@
+{
+  "animal_z01_01": {
+    "name": "Chicken",
+    "rig": "./animal-animations/rigs/animal_z01_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "138876818343982",
+        "url": "./animal-animations/clips/138876818343982.json",
+        "name": "Two_Legs_Ver2_Walk_Two_Legs_Ver2_Walk",
+        "duration": 1.125,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123405154256492",
+        "url": "./animal-animations/clips/123405154256492.json",
+        "name": "Two_Legs_Ver2_Idle_Two_Leg_Ver2_Idle",
+        "duration": 1.9166666269302368,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z01_02": {
+    "name": "Cat",
+    "rig": "./animal-animations/rigs/animal_z01_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z01_03": {
+    "name": "Bat",
+    "rig": "./animal-animations/rigs/animal_z01_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "138876818343982",
+        "url": "./animal-animations/clips/138876818343982.json",
+        "name": "Two_Legs_Ver2_Walk_Two_Legs_Ver2_Walk",
+        "duration": 1.125,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123405154256492",
+        "url": "./animal-animations/clips/123405154256492.json",
+        "name": "Two_Legs_Ver2_Idle_Two_Leg_Ver2_Idle",
+        "duration": 1.9166666269302368,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z01_04": {
+    "name": "Anteater",
+    "rig": "./animal-animations/rigs/animal_z01_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "119633799371557",
+        "url": "./animal-animations/clips/119633799371557.json",
+        "name": "Anim_Wild_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "88965886085030",
+        "url": "./animal-animations/clips/88965886085030.json",
+        "name": "WildIdle",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z01_05": {
+    "name": "Badger",
+    "rig": "./animal-animations/rigs/animal_z01_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "119633799371557",
+        "url": "./animal-animations/clips/119633799371557.json",
+        "name": "Anim_Wild_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "88965886085030",
+        "url": "./animal-animations/clips/88965886085030.json",
+        "name": "WildIdle",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z01_06": {
+    "name": "Parrot",
+    "rig": "./animal-animations/rigs/animal_z01_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "138876818343982",
+        "url": "./animal-animations/clips/138876818343982.json",
+        "name": "Two_Legs_Ver2_Walk_Two_Legs_Ver2_Walk",
+        "duration": 1.125,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123405154256492",
+        "url": "./animal-animations/clips/123405154256492.json",
+        "name": "Two_Legs_Ver2_Idle_Two_Leg_Ver2_Idle",
+        "duration": 1.9166666269302368,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z01_07": {
+    "name": "GoldenRetriver",
+    "rig": "./animal-animations/rigs/animal_z01_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z01_08": {
+    "name": "Bear",
+    "rig": "./animal-animations/rigs/animal_z01_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_01": {
+    "name": "Snake",
+    "rig": "./animal-animations/rigs/animal_z02_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "125786319812990",
+        "url": "./animal-animations/clips/125786319812990.json",
+        "name": "A_26_Walk_A_26_Walk",
+        "duration": 0.9166666865348816,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "112383600780869",
+        "url": "./animal-animations/clips/112383600780869.json",
+        "name": "A_26_Idle_A_26_Idle",
+        "duration": 1.8333333730697632,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_02": {
+    "name": "Tiger",
+    "rig": "./animal-animations/rigs/animal_z02_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_03": {
+    "name": "Lion",
+    "rig": "./animal-animations/rigs/animal_z02_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_04": {
+    "name": "Ankylosaurus",
+    "rig": "./animal-animations/rigs/animal_z02_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_05": {
+    "name": "COCKATRICE",
+    "rig": "./animal-animations/rigs/animal_z02_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "86907797531617",
+        "url": "./animal-animations/clips/86907797531617.json",
+        "name": "BIRD_WALK_BIRD_WALK",
+        "duration": 0.9583333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "98243084234606",
+        "url": "./animal-animations/clips/98243084234606.json",
+        "name": "BIRD_IDLE",
+        "duration": 2.0416667461395264,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_06": {
+    "name": "SPHINX",
+    "rig": "./animal-animations/rigs/animal_z02_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "129201488277568",
+        "url": "./animal-animations/clips/129201488277568.json",
+        "name": "4legs_walk_4legs_walk",
+        "duration": 1.0416666269302368,
+        "mappedBones": 28,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "116727487408212",
+        "url": "./animal-animations/clips/116727487408212.json",
+        "name": "4legs_idle_4legs_idle",
+        "duration": 2.2916667461395264,
+        "mappedBones": 28,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_07": {
+    "name": "CHIREMA",
+    "rig": "./animal-animations/rigs/animal_z02_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "129201488277568",
+        "url": "./animal-animations/clips/129201488277568.json",
+        "name": "4legs_walk_4legs_walk",
+        "duration": 1.0416666269302368,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "116727487408212",
+        "url": "./animal-animations/clips/116727487408212.json",
+        "name": "4legs_idle_4legs_idle",
+        "duration": 2.2916667461395264,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z02_08": {
+    "name": "MANTICORE",
+    "rig": "./animal-animations/rigs/animal_z02_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "75162269191521",
+        "url": "./animal-animations/clips/75162269191521.json",
+        "name": "4legs_2legs_winged_walk_4legs_2legs_winged_wa",
+        "duration": 0.9583333134651184,
+        "mappedBones": 29,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "120840122644736",
+        "url": "./animal-animations/clips/120840122644736.json",
+        "name": "4legs_2legs_winged_idle_4legs_2legs_winged_id",
+        "duration": 2.2916667461395264,
+        "mappedBones": 29,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_01": {
+    "name": "Pigeon",
+    "rig": "./animal-animations/rigs/animal_z03_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "138876818343982",
+        "url": "./animal-animations/clips/138876818343982.json",
+        "name": "Two_Legs_Ver2_Walk_Two_Legs_Ver2_Walk",
+        "duration": 1.125,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123405154256492",
+        "url": "./animal-animations/clips/123405154256492.json",
+        "name": "Two_Legs_Ver2_Idle_Two_Leg_Ver2_Idle",
+        "duration": 1.9166666269302368,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_02": {
+    "name": "GuiennaPig",
+    "rig": "./animal-animations/rigs/animal_z03_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_03": {
+    "name": "Maltese",
+    "rig": "./animal-animations/rigs/animal_z03_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "116245363105425",
+        "url": "./animal-animations/clips/116245363105425.json",
+        "name": "Anim_Dogs_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "75384603821961",
+        "url": "./animal-animations/clips/75384603821961.json",
+        "name": "Anim_Dogs_Idle_Take 001",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_04": {
+    "name": "Goat",
+    "rig": "./animal-animations/rigs/animal_z03_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_05": {
+    "name": "BichonFrise",
+    "rig": "./animal-animations/rigs/animal_z03_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "116245363105425",
+        "url": "./animal-animations/clips/116245363105425.json",
+        "name": "Anim_Dogs_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "75384603821961",
+        "url": "./animal-animations/clips/75384603821961.json",
+        "name": "Anim_Dogs_Idle_Take 001",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_06": {
+    "name": "SecretaryBird",
+    "rig": "./animal-animations/rigs/animal_z03_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "76351241713292",
+        "url": "./animal-animations/clips/76351241713292.json",
+        "name": "Anim_Bird_Walk_Anim_Bird_Walk",
+        "duration": 0.7916666865348816,
+        "mappedBones": 20,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "110983201525872",
+        "url": "./animal-animations/clips/110983201525872.json",
+        "name": "Anim_Bird_Idle_Anim_Bird_Idle",
+        "duration": 3.2916667461395264,
+        "mappedBones": 20,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_07": {
+    "name": "Llama",
+    "rig": "./animal-animations/rigs/animal_z03_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z03_08": {
+    "name": "Polar Bear",
+    "rig": "./animal-animations/rigs/animal_z03_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_01": {
+    "name": "Bunny",
+    "rig": "./animal-animations/rigs/animal_z04_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 22,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 22,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_02": {
+    "name": "trumpet",
+    "rig": "./animal-animations/rigs/animal_z04_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 7,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 7,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_03": {
+    "name": "Muscovy Duck",
+    "rig": "./animal-animations/rigs/animal_z04_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "76351241713292",
+        "url": "./animal-animations/clips/76351241713292.json",
+        "name": "Anim_Bird_Walk_Anim_Bird_Walk",
+        "duration": 0.7916666865348816,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "110983201525872",
+        "url": "./animal-animations/clips/110983201525872.json",
+        "name": "Anim_Bird_Idle_Anim_Bird_Idle",
+        "duration": 3.2916667461395264,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_04": {
+    "name": "barracuda",
+    "rig": "./animal-animations/rigs/animal_z04_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 9,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 9,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_05": {
+    "name": "Moorish idol",
+    "rig": "./animal-animations/rigs/animal_z04_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 10,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 10,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_06": {
+    "name": "Yak",
+    "rig": "./animal-animations/rigs/animal_z04_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "119633799371557",
+        "url": "./animal-animations/clips/119633799371557.json",
+        "name": "Anim_Wild_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "88965886085030",
+        "url": "./animal-animations/clips/88965886085030.json",
+        "name": "WildIdle",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_07": {
+    "name": "Cobra",
+    "rig": "./animal-animations/rigs/animal_z04_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "125786319812990",
+        "url": "./animal-animations/clips/125786319812990.json",
+        "name": "A_26_Walk_A_26_Walk",
+        "duration": 0.9166666865348816,
+        "mappedBones": 7,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "112383600780869",
+        "url": "./animal-animations/clips/112383600780869.json",
+        "name": "A_26_Idle_A_26_Idle",
+        "duration": 1.8333333730697632,
+        "mappedBones": 7,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z04_08": {
+    "name": "PREHISTORIC_DRAGONFLY",
+    "rig": "./animal-animations/rigs/animal_z04_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "103049401799532",
+        "url": "./animal-animations/clips/103049401799532.json",
+        "name": "BugFly",
+        "duration": 1.2083333730697632,
+        "mappedBones": 8,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "126488274105268",
+        "url": "./animal-animations/clips/126488274105268.json",
+        "name": "BugIdle",
+        "duration": 4.125,
+        "mappedBones": 8,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_01": {
+    "name": "Snail",
+    "rig": "./animal-animations/rigs/animal_z05_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "102314204570385",
+        "url": "./animal-animations/clips/102314204570385.json",
+        "name": "A_43_Walk_A_43_Walk",
+        "duration": 1.4166666269302368,
+        "mappedBones": 7,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "89544843133791",
+        "url": "./animal-animations/clips/89544843133791.json",
+        "name": "A_43_Idle_A_43_Idle",
+        "duration": 1.625,
+        "mappedBones": 7,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_02": {
+    "name": "Goldfish",
+    "rig": "./animal-animations/rigs/animal_z05_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 10,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 10,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_03": {
+    "name": "Lizard",
+    "rig": "./animal-animations/rigs/animal_z05_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_04": {
+    "name": "pufferfish",
+    "rig": "./animal-animations/rigs/animal_z05_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 11,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 11,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_05": {
+    "name": "Butterflyfish",
+    "rig": "./animal-animations/rigs/animal_z05_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 13,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 13,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_06": {
+    "name": "stingray",
+    "rig": "./animal-animations/rigs/animal_z05_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_07": {
+    "name": "Regal",
+    "rig": "./animal-animations/rigs/animal_z05_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 12,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 12,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z05_08": {
+    "name": "PREHISTORIC_MOTH",
+    "rig": "./animal-animations/rigs/animal_z05_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "103049401799532",
+        "url": "./animal-animations/clips/103049401799532.json",
+        "name": "BugFly",
+        "duration": 1.2083333730697632,
+        "mappedBones": 8,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "126488274105268",
+        "url": "./animal-animations/clips/126488274105268.json",
+        "name": "BugIdle",
+        "duration": 4.125,
+        "mappedBones": 8,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_01": {
+    "name": "Cuttlefish",
+    "rig": "./animal-animations/rigs/animal_z06_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "101166563162686",
+        "url": "./animal-animations/clips/101166563162686.json",
+        "name": "Anim_Fish_Walk_Anim_Fish_Walk",
+        "duration": 1.2916666269302368,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "110459384539656",
+        "url": "./animal-animations/clips/110459384539656.json",
+        "name": "Anim_Fish_Idle_Anim_Fish_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_02": {
+    "name": "FangtoothFish",
+    "rig": "./animal-animations/rigs/animal_z06_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "101166563162686",
+        "url": "./animal-animations/clips/101166563162686.json",
+        "name": "Anim_Fish_Walk_Anim_Fish_Walk",
+        "duration": 1.2916666269302368,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "110459384539656",
+        "url": "./animal-animations/clips/110459384539656.json",
+        "name": "Anim_Fish_Idle_Anim_Fish_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_03": {
+    "name": "Swordfish",
+    "rig": "./animal-animations/rigs/animal_z06_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_04": {
+    "name": "MantisShrimp",
+    "rig": "./animal-animations/rigs/animal_z06_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "101166563162686",
+        "url": "./animal-animations/clips/101166563162686.json",
+        "name": "Anim_Fish_Walk_Anim_Fish_Walk",
+        "duration": 1.2916666269302368,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "110459384539656",
+        "url": "./animal-animations/clips/110459384539656.json",
+        "name": "Anim_Fish_Idle_Anim_Fish_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_05": {
+    "name": "GoblinShark",
+    "rig": "./animal-animations/rigs/animal_z06_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "101166563162686",
+        "url": "./animal-animations/clips/101166563162686.json",
+        "name": "Anim_Fish_Walk_Anim_Fish_Walk",
+        "duration": 1.2916666269302368,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "110459384539656",
+        "url": "./animal-animations/clips/110459384539656.json",
+        "name": "Anim_Fish_Idle_Anim_Fish_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_06": {
+    "name": "LeafySeaDragon",
+    "rig": "./animal-animations/rigs/animal_z06_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "101166563162686",
+        "url": "./animal-animations/clips/101166563162686.json",
+        "name": "Anim_Fish_Walk_Anim_Fish_Walk",
+        "duration": 1.2916666269302368,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "110459384539656",
+        "url": "./animal-animations/clips/110459384539656.json",
+        "name": "Anim_Fish_Idle_Anim_Fish_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 6,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_07": {
+    "name": "MEGALODON",
+    "rig": "./animal-animations/rigs/animal_z06_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "135431336555966",
+        "url": "./animal-animations/clips/135431336555966.json",
+        "name": "FISH_SWIM_FISH_SWIM",
+        "duration": 1.2083333730697632,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "139137956762257",
+        "url": "./animal-animations/clips/139137956762257.json",
+        "name": "FISH_IDLE_FISH_IDLE",
+        "duration": 2.6666667461395264,
+        "mappedBones": 18,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z06_08": {
+    "name": "Amphiptere",
+    "rig": "./animal-animations/rigs/animal_z06_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "132786705856863",
+        "url": "./animal-animations/clips/132786705856863.json",
+        "name": "Snake_Walk_Snake_Walk",
+        "duration": 1.0,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "120871615286306",
+        "url": "./animal-animations/clips/120871615286306.json",
+        "name": "Snake_Idle_Snake_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_01": {
+    "name": "Jackalope",
+    "rig": "./animal-animations/rigs/animal_z07_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "119633799371557",
+        "url": "./animal-animations/clips/119633799371557.json",
+        "name": "Anim_Wild_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "88965886085030",
+        "url": "./animal-animations/clips/88965886085030.json",
+        "name": "WildIdle",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_02": {
+    "name": "DIMETRODON",
+    "rig": "./animal-animations/rigs/animal_z07_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "129201488277568",
+        "url": "./animal-animations/clips/129201488277568.json",
+        "name": "4legs_walk_4legs_walk",
+        "duration": 1.0416666269302368,
+        "mappedBones": 28,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "116727487408212",
+        "url": "./animal-animations/clips/116727487408212.json",
+        "name": "4legs_idle_4legs_idle",
+        "duration": 2.2916667461395264,
+        "mappedBones": 28,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_03": {
+    "name": "Brachiosaurus",
+    "rig": "./animal-animations/rigs/animal_z07_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_04": {
+    "name": "Lindworm",
+    "rig": "./animal-animations/rigs/animal_z07_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "132786705856863",
+        "url": "./animal-animations/clips/132786705856863.json",
+        "name": "Snake_Walk_Snake_Walk",
+        "duration": 1.0,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "120871615286306",
+        "url": "./animal-animations/clips/120871615286306.json",
+        "name": "Snake_Idle_Snake_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 14,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_05": {
+    "name": "T-Rex",
+    "rig": "./animal-animations/rigs/animal_z07_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "89517524310155",
+        "url": "./animal-animations/clips/89517524310155.json",
+        "name": "Biped_Walk_Biped_Walk",
+        "duration": 0.9166666865348816,
+        "mappedBones": 21,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "95732239757990",
+        "url": "./animal-animations/clips/95732239757990.json",
+        "name": "Biped_Idle_Biped_Idle",
+        "duration": 8.291666984558105,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_06": {
+    "name": "Fenrir",
+    "rig": "./animal-animations/rigs/animal_z07_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "119633799371557",
+        "url": "./animal-animations/clips/119633799371557.json",
+        "name": "Anim_Wild_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "88965886085030",
+        "url": "./animal-animations/clips/88965886085030.json",
+        "name": "WildIdle",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_07": {
+    "name": "CERBERUS",
+    "rig": "./animal-animations/rigs/animal_z07_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "129201488277568",
+        "url": "./animal-animations/clips/129201488277568.json",
+        "name": "4legs_walk_4legs_walk",
+        "duration": 1.0416666269302368,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "116727487408212",
+        "url": "./animal-animations/clips/116727487408212.json",
+        "name": "4legs_idle_4legs_idle",
+        "duration": 2.2916667461395264,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z07_08": {
+    "name": "Raiju",
+    "rig": "./animal-animations/rigs/animal_z07_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "119633799371557",
+        "url": "./animal-animations/clips/119633799371557.json",
+        "name": "Anim_Wild_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "88965886085030",
+        "url": "./animal-animations/clips/88965886085030.json",
+        "name": "WildIdle",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_01": {
+    "name": "Tanuki",
+    "rig": "./animal-animations/rigs/animal_z08_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "89517524310155",
+        "url": "./animal-animations/clips/89517524310155.json",
+        "name": "Biped_Walk_Biped_Walk",
+        "duration": 0.9166666865348816,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "95732239757990",
+        "url": "./animal-animations/clips/95732239757990.json",
+        "name": "Biped_Idle_Biped_Idle",
+        "duration": 8.291666984558105,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_02": {
+    "name": "Surgeonfish",
+    "rig": "./animal-animations/rigs/animal_z08_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 10,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 10,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_03": {
+    "name": "Mandarinfish",
+    "rig": "./animal-animations/rigs/animal_z08_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 11,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 11,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_04": {
+    "name": "DumboOctopus",
+    "rig": "./animal-animations/rigs/animal_z08_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "125057486164961",
+        "url": "./animal-animations/clips/125057486164961.json",
+        "name": "Anim_Octopus_Walk_Anim_Octopus_Walk",
+        "duration": 1.0416666269302368,
+        "mappedBones": 20,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "130358947483767",
+        "url": "./animal-animations/clips/130358947483767.json",
+        "name": "Anim_Octopus_Idle_Anim_Octopus_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 20,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_05": {
+    "name": "Akita",
+    "rig": "./animal-animations/rigs/animal_z08_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "116245363105425",
+        "url": "./animal-animations/clips/116245363105425.json",
+        "name": "Anim_Dogs_Walk_Take 001",
+        "duration": 0.7083333134651184,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "75384603821961",
+        "url": "./animal-animations/clips/75384603821961.json",
+        "name": "Anim_Dogs_Idle_Take 001",
+        "duration": 2.5,
+        "mappedBones": 27,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_06": {
+    "name": "Gallimimus",
+    "rig": "./animal-animations/rigs/animal_z08_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "89517524310155",
+        "url": "./animal-animations/clips/89517524310155.json",
+        "name": "Biped_Walk_Biped_Walk",
+        "duration": 0.9166666865348816,
+        "mappedBones": 21,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "95732239757990",
+        "url": "./animal-animations/clips/95732239757990.json",
+        "name": "Biped_Idle_Biped_Idle",
+        "duration": 8.291666984558105,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_07": {
+    "name": "Wolf",
+    "rig": "./animal-animations/rigs/animal_z08_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z08_08": {
+    "name": "SIMURGH",
+    "rig": "./animal-animations/rigs/animal_z08_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "86907797531617",
+        "url": "./animal-animations/clips/86907797531617.json",
+        "name": "BIRD_WALK_BIRD_WALK",
+        "duration": 0.9583333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "98243084234606",
+        "url": "./animal-animations/clips/98243084234606.json",
+        "name": "BIRD_IDLE",
+        "duration": 2.0416667461395264,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_01": {
+    "name": "Crocodile",
+    "rig": "./animal-animations/rigs/animal_z09_01.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_02": {
+    "name": "Whale",
+    "rig": "./animal-animations/rigs/animal_z09_02.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "83727818424239",
+        "url": "./animal-animations/clips/83727818424239.json",
+        "name": "Fish_Swim_Fish_Swim",
+        "duration": 1.2083333730697632,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "78608203402071",
+        "url": "./animal-animations/clips/78608203402071.json",
+        "name": "FishIdle",
+        "duration": 2.6666667461395264,
+        "mappedBones": 16,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_03": {
+    "name": "Zebra",
+    "rig": "./animal-animations/rigs/animal_z09_03.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "105123564900536",
+        "url": "./animal-animations/clips/105123564900536.json",
+        "name": "Four_Legs_Walk_Four_Legs_Walk",
+        "duration": 0.7083333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "123080190944814",
+        "url": "./animal-animations/clips/123080190944814.json",
+        "name": "Four_Legs_Idle_Four_Legs_Idle",
+        "duration": 2.4583332538604736,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_04": {
+    "name": "THUNDERBIRD",
+    "rig": "./animal-animations/rigs/animal_z09_04.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "86907797531617",
+        "url": "./animal-animations/clips/86907797531617.json",
+        "name": "BIRD_WALK_BIRD_WALK",
+        "duration": 0.9583333134651184,
+        "mappedBones": 24,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "98243084234606",
+        "url": "./animal-animations/clips/98243084234606.json",
+        "name": "BIRD_IDLE",
+        "duration": 2.0416667461395264,
+        "mappedBones": 24,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_05": {
+    "name": "ARCHAEOPTERYX",
+    "rig": "./animal-animations/rigs/animal_z09_05.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "86907797531617",
+        "url": "./animal-animations/clips/86907797531617.json",
+        "name": "BIRD_WALK_BIRD_WALK",
+        "duration": 0.9583333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "98243084234606",
+        "url": "./animal-animations/clips/98243084234606.json",
+        "name": "BIRD_IDLE",
+        "duration": 2.0416667461395264,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_06": {
+    "name": "WINGED_IMP",
+    "rig": "./animal-animations/rigs/animal_z09_06.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "112609143900072",
+        "url": "./animal-animations/clips/112609143900072.json",
+        "name": "2legs_winged_walk_2legs_winged_walk",
+        "duration": 0.9583333134651184,
+        "mappedBones": 19,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "111041409743295",
+        "url": "./animal-animations/clips/111041409743295.json",
+        "name": "2legs_winged_idle_2legs_winged",
+        "duration": 1.875,
+        "mappedBones": 19,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_07": {
+    "name": "CALADRIUS",
+    "rig": "./animal-animations/rigs/animal_z09_07.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "86907797531617",
+        "url": "./animal-animations/clips/86907797531617.json",
+        "name": "BIRD_WALK_BIRD_WALK",
+        "duration": 0.9583333134651184,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "98243084234606",
+        "url": "./animal-animations/clips/98243084234606.json",
+        "name": "BIRD_IDLE",
+        "duration": 2.0416667461395264,
+        "mappedBones": 25,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_08": {
+    "name": "Velicoraptor",
+    "rig": "./animal-animations/rigs/animal_z09_08.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "89517524310155",
+        "url": "./animal-animations/clips/89517524310155.json",
+        "name": "Biped_Walk_Biped_Walk",
+        "duration": 0.9166666865348816,
+        "mappedBones": 21,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "95732239757990",
+        "url": "./animal-animations/clips/95732239757990.json",
+        "name": "Biped_Idle_Biped_Idle",
+        "duration": 8.291666984558105,
+        "mappedBones": 26,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_09": {
+    "name": "CLASSICDRAGON",
+    "rig": "./animal-animations/rigs/animal_z09_09.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "75162269191521",
+        "url": "./animal-animations/clips/75162269191521.json",
+        "name": "4legs_2legs_winged_walk_4legs_2legs_winged_wa",
+        "duration": 0.9583333134651184,
+        "mappedBones": 32,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "120840122644736",
+        "url": "./animal-animations/clips/120840122644736.json",
+        "name": "4legs_2legs_winged_idle_4legs_2legs_winged_id",
+        "duration": 2.2916667461395264,
+        "mappedBones": 32,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z09_10": {
+    "name": "QILIN",
+    "rig": "./animal-animations/rigs/animal_z09_10.json",
+    "actions": {
+      "Walk": {
+        "available": true,
+        "id": "129201488277568",
+        "url": "./animal-animations/clips/129201488277568.json",
+        "name": "4legs_walk_4legs_walk",
+        "duration": 1.0416666269302368,
+        "mappedBones": 28,
+        "identity": "asset-name-and-rig-match"
+      },
+      "Idle": {
+        "available": true,
+        "id": "116727487408212",
+        "url": "./animal-animations/clips/116727487408212.json",
+        "name": "4legs_idle_4legs_idle",
+        "duration": 2.2916667461395264,
+        "mappedBones": 28,
+        "identity": "asset-name-and-rig-match"
+      }
+    },
+    "status": "缓存蒙皮已通过几何和骨架核对"
+  },
+  "animal_z10_01": {
+    "name": "Bug",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_02": {
+    "name": "CrystalLizard",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_03": {
+    "name": "CrystalBeast",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_04": {
+    "name": "CrystalRaptor",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_05": {
+    "name": "CrystalDragon",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_06": {
+    "name": "Mantis",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_07": {
+    "name": "AlienJellyfish",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_08": {
+    "name": "CrystalScorpion",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_09": {
+    "name": "Behemoth",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_10": {
+    "name": "CrystalWolf",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_11": {
+    "name": "CelestialBeast",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  },
+  "animal_z10_12": {
+    "name": "CelestialSpirit",
+    "rig": null,
+    "actions": {},
+    "status": "缺少可用蒙皮网格"
+  }
+}

@@ -1,0 +1,20 @@
+#settings-button{position:fixed;left:calc(max(165px,12vw) + 52px);top:12px;width:44px;height:44px;z-index:17;border:0;border-radius:12px;background:#0009;padding:7px;cursor:pointer;touch-action:manipulation}
+#settings-button svg{width:100%;height:100%;pointer-events:none}
+#settings-button:focus-visible{outline:2px solid white}
+#game-settings{position:fixed;inset:0;z-index:18;user-select:none;pointer-events:auto}
+#game-settings[hidden],#game-settings [hidden]{display:none!important}
+.settings-stage{position:absolute;left:50%;top:50%;width:1000px;height:833.55265px;transform:translate(-50%,-50%) scale(var(--settings-scale,1));transform-origin:center;outline:none;isolation:isolate}
+#game-settings .source-gui{position:absolute;box-sizing:border-box;margin:0;padding:0;border:0;pointer-events:none;isolation:isolate;font:inherit;color:inherit;outline:none}
+#game-settings button.source-gui{cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+#game-settings button:focus-visible{outline:3px solid white;outline-offset:4px}
+#game-settings .source-text{display:block;width:100%;line-height:1.06;pointer-events:none;flex:none}
+#game-settings .source-image{position:absolute;inset:0;pointer-events:none;background-position:center}
+#game-settings .source-scroll{overflow-y:auto!important;overflow-x:hidden!important;pointer-events:auto;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:thin;scrollbar-color:#fff8 transparent}
+#game-settings .source-content{position:relative;width:100%;pointer-events:none}
+@media(pointer:coarse){#settings-button{left:calc(max(120px,12vw) + 44px);top:8px;width:36px;height:36px;padding:6px}}
+
+.settings-language{position:absolute;left:0;width:100%;height:110px;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:12px 24px;box-sizing:border-box;background:#32509c;border:3px solid #172553;border-radius:14px;pointer-events:auto;color:white;font:bold 32px Arial,"Microsoft YaHei",sans-serif;-webkit-text-stroke:2px #000;paint-order:stroke fill}
+.settings-language-options{display:flex;gap:10px}.settings-language button{font:inherit;font-size:27px;color:white;-webkit-text-stroke:2px #000;paint-order:stroke fill;border:3px solid #152249;border-radius:9px;padding:12px;background:#526ca9;cursor:pointer;pointer-events:auto;touch-action:manipulation}.settings-language button[aria-pressed=true]{background:#32ad51;border-color:#92ff92}
+.locale-zh .source-text{font-family:Arial,"Microsoft YaHei","PingFang SC",sans-serif!important}
+
+#settings-button{top:calc(12px + var(--host-safe-top,0px));margin-left:var(--host-safe-left,0px)}

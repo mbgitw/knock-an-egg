@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Index UI · 隔离验收</title><link rel="stylesheet" href="gameplay/index-ui.css"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script><style>html,body{margin:0;overflow:hidden;height:100%;background:linear-gradient(140deg,#4cbbdf 0 47%,#90ca24 48% 100%)}canvas{position:fixed;inset:0;width:100%;height:100%}</style></head><body><canvas tabindex="0" aria-label="隔离场景"></canvas><script type="module">
+import {GameIndexUI} from './gameplay/index-ui.js';
+const snapshot=()=>({discovered:new Set(['Chicken','Cat','Bat','Anteater','Badger']),claimed:new Set(['Chicken','Cat'])});
+const ui=new GameIndexUI({canvas:document.querySelector('canvas'),snapshot});ui.open();
+document.querySelector('canvas').dataset.ready='true';
+</script></body></html>

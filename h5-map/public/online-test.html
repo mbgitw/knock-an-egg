@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>七人联机基础验收</title><script src="builda-sdk.js"></script></head><body>
+<p>独立联机验收页：只验证房间、身份和操作回执，不是正式游戏入口。</p><pre id="status"></pre><button id="unlock">解锁自己的跑步机</button><button id="leave">确认离开房间</button><pre id="state"></pre>
+<script src="builda-bootstrap.js"></script><script type="module">
+import {connectPasture} from './online/connect.js';
+import {OP} from './online/protocol.js';
+let last={},session;
+session=await connectPasture({onStatus:s=>document.querySelector('#status').textContent=JSON.stringify(s),onMessage:(op,data)=>{if(op===OP.ACCOUNT||op===OP.SNAPSHOT||op===OP.EVENT||op===OP.RECEIPT){last[op]=data;document.querySelector('#state').textContent=JSON.stringify(last,null,2);}}});
+document.querySelector('#unlock').onclick=()=>session.intent('treadmill-unlock');document.querySelector('#leave').onclick=()=>session.leave();
+addEventListener('game-host-pause',()=>session.setActive(!window.gameHostState.paused));
+setInterval(()=>session.retryIntent(),250);
+</script></body></html>

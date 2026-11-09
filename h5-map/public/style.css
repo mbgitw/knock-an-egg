@@ -1,0 +1,21 @@
+@import './hud-layout/hud.css';
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#bed5e4;overscroll-behavior:none}canvas{display:block;width:100%;height:100%;outline:none;touch-action:none;user-select:none;-webkit-user-select:none}#loading{position:fixed;inset:0;background:#bed5e4;display:grid;place-items:center;pointer-events:none}.spinner{width:28px;height:28px;border:2px solid #ffffff50;border-top-color:#fff;border-radius:50%;animation:spin .85s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+#training-ui{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#fff;position:fixed;inset:0;pointer-events:none;user-select:none}
+#training-ui [hidden]{display:none!important}
+#training-ui button{pointer-events:auto;touch-action:manipulation;cursor:pointer;font:700 14px system-ui;border:1px solid #ffffff55;border-radius:12px;padding:11px 17px;color:white;background:#233b4bf0;box-shadow:0 3px 0 #142a38;transition:filter .12s,transform .12s}
+#training-ui button:hover{filter:brightness(1.14)}#training-ui button:active{transform:translateY(2px)}#training-ui button:disabled{cursor:default;filter:saturate(.3);opacity:.65}
+#public-event{position:absolute;top:max(18px,max(env(safe-area-inset-top),var(--host-safe-top,0px)));left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:22px;background:#41250be8;border:1px solid #ffa94799;color:#ffdb93;font-size:13px;font-weight:700;white-space:nowrap}
+#public-train{position:absolute;right:24px;bottom:35px;background:#915324!important}
+#speed-popups{position:absolute;inset:0;overflow:hidden}.speed-popup{position:absolute;top:0;left:0;font-size:23px;font-weight:900;text-shadow:0 2px 0 #152d49,1px 0 #152d49,-1px 0 #152d49;will-change:transform,opacity}
+
+/* Startup overlay stays above gameplay controls and below connection recovery (200). */
+#loading{z-index:190;pointer-events:auto;touch-action:none}
+.loading-panel{width:min(440px,80vw);text-align:center;color:#fff;font:700 18px/1.5 system-ui,"Microsoft YaHei",sans-serif;-webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:none}
+#loading-stage{margin:0 0 16px;min-height:27px}
+#loading-progress{height:24px;overflow:hidden;border:3px solid #182631;border-radius:16px;background:#6f8fa4}
+#loading-fill{height:100%;width:0;background:#79dd6c;transition:width .2s ease-out}
+#loading-percent{margin:8px 0 0;font-size:22px}
+#loading-note{margin:4px 0 0;font-size:14px}
+#loading-retry{margin-top:20px;padding:10px 28px;border:2px solid #182631;border-radius:10px;background:#79dd6c;color:white;font:inherit;-webkit-text-stroke:2px black;paint-order:stroke fill;cursor:pointer}
+#loading-retry[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){#loading-fill{transition:none}}

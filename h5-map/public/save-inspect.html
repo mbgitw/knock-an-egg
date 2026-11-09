@@ -1,0 +1,5 @@
+<!doctype html><meta charset="utf-8"><title>存档只读检查</title><pre id="report"></pre><script type="module">
+import {SAVE_KEY,restoreState} from './treadmill-state.js';
+const raw=JSON.parse(localStorage.getItem(SAVE_KEY)||'null'),restored=restoreState(raw);
+document.querySelector('pre').textContent=JSON.stringify({hasSave:!!raw,power:raw?.power,rawPets:raw?.pickaxes?.pets,restoredPets:restored.pickaxes.pets,placed:raw?.plot?.pets,broken:raw?.pickaxes?.broken,claims:raw?.pickaxes?.claims?.length},null,2);
+</script>

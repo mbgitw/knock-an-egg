@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 3,
+  "onlineCompatibilityRevision": 3,
+  "roomTransfer": {
+    "snapshotSchemaVersion": 1,
+    "authoritativeState": [
+      "state.elapsed",
+      "state.players",
+      "state.eggs",
+      "state.guards",
+      "state.publicEvent",
+      "state.revision",
+      "state.joinable",
+      "state.animals",
+      "state.namespace",
+      "state.pendingSaves",
+      "state.animalCache",
+      "state.saving",
+      "state.titanic"
+    ],
+    "failureRecovery": "latest-checkpoint",
+    "pauseBudgetMillis": 1000
+  },
+  "source": "server/game",
+  "roomRoute": "pasture-world",
+  "roomType": "authoritative",
+  "version": "v1",
+  "tickRate": 20,
+  "matchKeys": {
+    "pasture-world": {
+      "mode": "room",
+      "teamCount": 1,
+      "teamSize": 7,
+      "publicMatchmaking": true,
+      "createPublicRoom": true,
+      "privateRoomsEnabled": false,
+      "recovery": "recoverable"
+    }
+  },
+  "roomParameters": {}
+}

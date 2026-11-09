@@ -1,0 +1,34 @@
+{
+  "name": "knock-egg-map",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:guard-planner": "node tools/build-online-rules.mjs && node --test tools/test-guard-planner.mjs tools/test-room-budget.mjs",
+    "test:free-gift": "node tools/build-online-rules.mjs && node --test tools/test-free-gift.mjs",
+    "preview": "python serve.py",
+    "test": "node --test tools/test-browser-target.mjs tools/test-growth-hatch.mjs tools/test-animal-glb-runtime.mjs tools/test-platform-safety.mjs tools/test-chase-feedback.mjs tools/test-game-audio.mjs tools/test-online-index-claim.mjs tools/test-appearance-sender.mjs tools/test-mobile-gestures.mjs tools/test-draft-preview.mjs tools/test-i18n.mjs tools/test-scene-tap.mjs tools/test-animal-materials.mjs tools/test-animal-variants.mjs tools/test-weapon-combat.mjs tools/test-animal-attributes.mjs tools/test-titanic.mjs tools/test-pasture.mjs tools/test-index-claims.mjs tools/test-guard-ground.mjs tools/test-character-physics.mjs tools/test-treadmill-state.mjs tools/test-pickaxe-system.mjs tools/test-shop-booth.mjs tools/test-plot-upgrades.mjs tools/test-trails.mjs tools/test-guards.mjs tools/test-weapon-system.mjs tools/test-weapon-effects.mjs tools/test-egg-spawning.mjs tools/test-weapon-swing.mjs tools/test-zone-entry.mjs tools/test-egg-presentation.mjs tools/test-egg-ambient.mjs tools/test-animal-carry.mjs tools/test-bank-feedback.mjs tools/test-backpack.mjs tools/test-merge.mjs tools/test-settings.mjs tools/test-commerce.mjs",
+    "test:pickaxes": "node --test tools/test-pickaxe-system.mjs",
+    "test:animal-animations": "node --test tools/test-animal-glb-runtime.mjs tools/test-animal-animations.mjs tools/test-planet-x-animations.mjs tools/test-paid-animal-animations.mjs tools/test-pet-animation-runtime.mjs",
+    "test:trails": "node --test tools/test-trails.mjs",
+    "test:guards": "node --test tools/test-guards.mjs",
+    "test:egg-spawning": "node --test tools/test-egg-spawning.mjs",
+    "test:egg-presentation": "node --test tools/test-egg-presentation.mjs",
+    "test:animal-carry": "node --test tools/test-animal-carry.mjs",
+    "test:online": "node tools/build-online-rules.mjs && node tools/test-online.mjs && node --test tools/test-animal-visual-race.mjs tools/test-offline-diagnostics.mjs tools/test-runtime-health.mjs tools/test-native-room-chat.mjs tools/test-interaction-regressions.mjs tools/test-guard-targets.mjs tools/test-online-game-identity.mjs tools/test-online-byte-boundary.mjs tools/test-online-presentation.mjs tools/test-movement-correction.mjs tools/test-motion-buffer.mjs tools/test-motion-v2.mjs tools/test-all-zone-eggs.mjs tools/test-network-payload.mjs",
+    "test:commerce": "node tools/build-online-rules.mjs && node --test tools/test-commerce.mjs tools/test-payment-direct.mjs",
+    "test:render-performance": "node --test tools/test-render-performance.mjs",
+    "test:treadmill-ui-compat": "node --test tools/test-treadmill-ui-compat.mjs",
+    "test:camera": "node --test tools/test-camera-occlusion.mjs tools/test-character-physics.mjs tools/test-plot-upgrades.mjs"
+  },
+  "dependencies": {
+    "@cysj/online-h5": "file:vendor/builda-online/client-sdk/h5",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@cysj/room": "file:server/typescript",
+    "@cysj/room-mock": "file:server/mock/typescript",
+    "esbuild": "^0.25.9",
+    "postcss": "8.5.31",
+    "typescript": "^6.0.3"
+  }
+}

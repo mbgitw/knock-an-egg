@@ -1,0 +1,21 @@
+@font-face{font-family:ZoneEntryTitle;src:url('./shop-ui/Montserrat-Black.ttf');font-weight:900;font-display:swap}
+@font-face{font-family:ZoneEntryText;src:url('./shop-ui/rubik-extra-bold.ttf');font-weight:800;font-display:swap}
+#zone-entry{position:fixed;left:50%;top:max(55px,max(env(safe-area-inset-top),var(--host-safe-top,0px)));width:70vw;height:10vh;min-height:64px;z-index:11;pointer-events:none;user-select:none;transform:translateX(-50%);font-family:ZoneEntryTitle,sans-serif;font-weight:900;color:white;container-type:size}
+#zone-entry[hidden],#zone-entry [hidden]{display:none!important}
+#zone-entry .zone-entry-title{position:absolute;left:50%;top:12.13175%;width:75.7365%;height:75.7365%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center}
+#zone-entry .zone-entry-band{position:absolute;inset:7.5% 0;background:#00000073;border:3px solid #000000bf;border-radius:8px;mask-image:linear-gradient(to right,transparent 5.4242%,black 50%,transparent 96.1057%)}
+#zone-entry .zone-entry-title-content{position:relative;display:flex;align-items:center;justify-content:center;gap:2.27cqw;white-space:nowrap;flex-shrink:0;height:100%;transform-origin:center}
+#zone-entry .zone-entry-name{font-size:52cqh;line-height:1.15;background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-stroke:5px #000;paint-order:stroke fill;filter:drop-shadow(0 2px 0 #000)}
+#zone-entry .zone-entry-icon{height:85%;width:auto;aspect-ratio:1;object-fit:contain}
+#zone-entry .zone-entry-speed{position:absolute;left:50%;top:75.7365%;width:75.7365%;height:53.2061%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center}
+#zone-entry .zone-entry-speed-content{display:flex;align-items:center;justify-content:center;gap:.25cqh;height:100%;white-space:nowrap;flex-shrink:0;font-family:ZoneEntryText,sans-serif;font-weight:800;font-size:38cqh;line-height:1.15;-webkit-text-stroke:5px black;paint-order:stroke fill;filter:drop-shadow(0 2px 0 #000)}
+#zone-entry .zone-entry-speed img{height:90%;aspect-ratio:1;object-fit:contain;margin-left:.35em}
+#zone-entry .zone-entry-speed strong{font:inherit;color:transparent;background:linear-gradient(to top,#0088ff,#00ffff 50.4%,#0091ff);background-clip:text;-webkit-background-clip:text}
+@media(max-width:650px){#zone-entry{width:96vw;top:max(128px,max(env(safe-area-inset-top),var(--host-safe-top,0px)));height:10vh;min-height:62px}#zone-entry .zone-entry-title,#zone-entry .zone-entry-speed{width:100%}#zone-entry .zone-entry-name,#zone-entry .zone-entry-speed-content{-webkit-text-stroke:3px black}}
+@media(max-height:500px){#zone-entry{top:max(18px,max(env(safe-area-inset-top),var(--host-safe-top,0px)));min-height:58px}}
+
+/* Separate fill layer keeps thick black outlines outside the gradient glyphs. */
+#zone-entry .zone-entry-name{position:relative;color:#000;background:none;-webkit-text-stroke:5px #000}
+#zone-entry .zone-entry-name::after,#zone-entry .zone-entry-speed strong::after{content:attr(data-text) / "";position:absolute;inset:0;color:transparent;-webkit-text-stroke:0;background:var(--zone-gradient);background-clip:text;-webkit-background-clip:text}
+#zone-entry .zone-entry-speed strong{position:relative;color:#000;background:none;--zone-gradient:linear-gradient(to top,#0088ff,#00ffff 50.4%,#0091ff)}
+@media(max-width:650px){#zone-entry .zone-entry-name{-webkit-text-stroke:3px #000}}

@@ -1,0 +1,26 @@
+/* Original MainGUI.AutoSwing / Scatchel.BottomHUD. See docs/HOTBAR_UI.md. */
+@property --auto-top{syntax:'<color>';inherits:false;initial-value:#ff4e51}
+@property --auto-bottom{syntax:'<color>';inherits:false;initial-value:#ff0000}
+#pickaxe-ui{--tool-size:min(4.73004vw,8.4dvh);--hotbar-bottom:max(5px,max(env(safe-area-inset-bottom),var(--host-safe-bottom,0px)));--auto-width:min(23.7477824vw,40.6402dvh)}
+#pickaxe-ui .pickaxe-hotbar{left:50%;bottom:var(--hotbar-bottom);gap:calc(var(--tool-size)*.05);align-items:center}
+#pickaxe-ui .tool-slot{position:relative;box-sizing:border-box;display:block;flex:none;width:var(--tool-size);height:var(--tool-size);padding:0!important;border:0;border-radius:calc(var(--tool-size)*.1);background:rgba(0,0,0,.5);box-shadow:none;color:white!important;opacity:1;filter:none;container-type:size;transition:transform .08s}
+#pickaxe-ui .tool-slot[aria-pressed=true]{outline:2px solid white;outline-offset:0;background:rgba(0,0,0,.5)}
+#pickaxe-ui .tool-slot[aria-pressed]{border:0;filter:none;opacity:1;box-shadow:none}
+#pickaxe-ui .tool-slot,#pickaxe-ui #auto-pickaxe{-webkit-tap-highlight-color:transparent}
+#pickaxe-ui .tool-slot:hover{transform:scale(1.03);filter:none}
+#pickaxe-ui .tool-slot:active{transform:scale(.98)}
+#pickaxe-ui .tool-slot img{position:absolute;left:5%;top:5%;width:90%;height:90%;object-fit:contain;pointer-events:none}
+#pickaxe-ui .tool-slot .tool-name{position:absolute;left:5%;bottom:5%;width:90%;height:27%;display:flex;align-items:center;justify-content:center;white-space:normal;text-align:center;font:800 21cqw/1 OriginalGotham,sans-serif;color:white;-webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:0 1px #000}
+#pickaxe-ui .tool-slot .tool-name.two-lines{font-size:12cqw}
+#pickaxe-ui .tool-slot kbd{position:absolute;left:10%;top:10%;font:800 24cqw/1 OriginalGotham,sans-serif;color:white;opacity:1;-webkit-text-stroke:4px #000;paint-order:stroke fill;z-index:2}
+#pickaxe-ui #auto-pickaxe{position:absolute;left:50%;bottom:calc(var(--hotbar-bottom) + var(--tool-size) + 20px);transform:translateX(-50%);width:var(--auto-width);height:auto;aspect-ratio:4.12171173;padding:0!important;border:0;border-radius:1px;background:linear-gradient(var(--auto-top),var(--auto-bottom));box-shadow:0 0 0 3px #4b1718;container-type:size;isolation:isolate;transition:filter .1s,box-shadow .22s,--auto-top .22s ease-out,--auto-bottom .22s ease-out}
+#pickaxe-ui #auto-pickaxe:before{content:"";position:absolute;inset:0;background:url('./index-ui/diamond.png') 0 0/50% 200%;opacity:.25;z-index:-1;pointer-events:none}
+#pickaxe-ui #auto-pickaxe:after{content:"";position:absolute;inset:0;border:9px solid transparent;border-image:url('./index-ui/bevel.png') 32 fill stretch;opacity:.75;z-index:-1;pointer-events:none}
+#pickaxe-ui #auto-pickaxe[aria-pressed=true]{--auto-top:#d4ff00;--auto-bottom:#1aff00;box-shadow:0 0 0 3px #3e4b00}
+#pickaxe-ui #auto-pickaxe img{position:absolute;height:92.5%;width:auto;aspect-ratio:1;object-fit:contain;left:2.5%;top:3.75%;pointer-events:none}
+#pickaxe-ui #auto-pickaxe .auto-swing-title{position:absolute;right:5%;top:16.1%;width:65%;height:67.8%;display:flex;align-items:center;justify-content:center;font:800 11.1cqw/1 OriginalRubik,sans-serif;letter-spacing:-.16cqw;white-space:nowrap;-webkit-text-stroke:6px #4b1718;paint-order:stroke fill;color:white;text-shadow:0 2px #4b1718}
+#pickaxe-ui #auto-pickaxe[aria-pressed=true] .auto-swing-title{-webkit-text-stroke-color:#3e4b00;text-shadow:0 2px #3e4b00}
+#pickaxe-ui #auto-pickaxe:active{filter:brightness(.92)}
+#weapon-choice{pointer-events:auto;position:absolute;bottom:calc(var(--tool-size) + var(--auto-width)/4.12171173 + 40px);left:50%;transform:translateX(-50%);max-width:180px;background:#183346;color:white;border-radius:6px;padding:5px}
+@media(pointer:coarse){#pickaxe-ui{--tool-size:min(10.664vw,12.3314dvh);--auto-width:min(58vw,40.6402dvh)}#pickaxe-ui .tool-slot kbd{display:none}}
+@media(max-width:600px) and (orientation:portrait){#pickaxe-ui{--tool-size:10.664vw;--auto-width:58vw}#pickaxe-ui #auto-pickaxe .auto-swing-title{-webkit-text-stroke-width:3px}#pickaxe-ui .tool-slot .tool-name{-webkit-text-stroke-width:1.5px}}

@@ -1,0 +1,63 @@
+const {chromium}=require('C:/Users/hortor/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+(async()=>{
+ const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:1500,height:1000}}),errors=[],checks=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('http://127.0.0.1:18088/builda-dev-shell.html?gameId=local-game&builda_mock_player=commerce-qa');
+  await page.getByRole('button',{name:'横屏',exact:true}).click();
+  const frame=page.frames().find(f=>f.url().includes('/index.html'));
+  await frame.waitForFunction(()=>window.game?.commerce,{},{timeout:60000});
+  assert.equal(await frame.evaluate(()=>game.account.storage.cloud),true);
+  const buy=async(id,success=true)=>{
+   await frame.locator(`[data-pay-id="${id}"]`).first().click();
+   await page.getByRole('button',{name:success?'成功':'失败',exact:true}).click();
+   await frame.waitForFunction(()=>!game.commerce.busy);
+  };
+  await frame.evaluate(()=>game.shopUI.openSection('CashPacks'));
+  assert.match(await frame.locator('[data-pay-id="3714065877"]').innerText(),/120 G/);
+  await buy(3714065877,false);assert.equal(await frame.evaluate(()=>game.account.data.cash),100);checks.push('cancel leaves balance unchanged');
+  await buy(3714065877);assert.equal(await frame.evaluate(()=>game.account.data.cash),100100);checks.push('G-coin cash purchase grants exact amount');
+  await frame.evaluate(()=>game.shopUI.openSection('SpeedPacks'));await buy(3712779280);
+  assert.equal(await frame.evaluate(()=>game.account.data.commerce.speedMultiplier),2);checks.push('next speed tier selected after grant');
+  await frame.evaluate(()=>game.shopUI.openSection('EggsPack'));await buy(3715295141);
+  assert.equal(await frame.evaluate(()=>game.account.data.mergeEggs.length),1);checks.push('paid egg enters backpack Eggs');
+  await frame.evaluate(()=>{game.shopUI.close();game.pickaxes.open('shop');});await buy(3712394693);
+  assert.ok(await frame.evaluate(()=>game.account.data.pickaxes.owned.includes(2)));checks.push('pickaxe paid button unlocks correct tier');
+  await frame.evaluate(()=>{game.pickaxes.close();game.trails.open();});await buy(3714147430);
+  assert.ok(await frame.evaluate(()=>game.account.data.trails.owned.includes(1)));checks.push('trail paid button unlocks correct tier');
+  await frame.evaluate(async()=>{game.trails.close();game.account.save();await game.account.storage.flush();});
+  await frame.goto(frame.url());await frame.waitForFunction(()=>window.game?.commerce,{},{timeout:60000});
+  const restored=await frame.evaluate(()=>({cash:game.account.data.cash,speed:game.account.data.commerce.speedMultiplier,eggs:game.account.data.mergeEggs.length,pickaxe:game.account.data.pickaxes.owned.includes(2),trail:game.account.data.trails.owned.includes(1)}));
+  assert.deepEqual(restored,{cash:100100,speed:2,eggs:1,pickaxe:true,trail:true});checks.push('SDK cloud restore keeps all five grants');
+  const eggId=await frame.evaluate(()=>game.account.data.mergeEggs[0].id);
+  await frame.evaluate(id=>{game.merge.state.place(id,[0,0,0]);game.inventoryUI.open('eggs');},eggId);
+  await buy(3714392668);assert.ok(await frame.evaluate(id=>game.account.data.growingEggs.find(e=>e.id===id).readyAt<=Date.now(),eggId));checks.push('single-egg paid skip uses frozen egg target');
+  await frame.evaluate(id=>{game.merge.state.hatch(id);game.account.data.growingEggs.find(e=>e.id===id).hatchingAt=Date.now()-6300;game.merge.state.finish();},eggId);
+  assert.equal(await frame.evaluate(()=>game.account.data.pickaxes.pets.length),1);checks.push('paid egg hatches into persistent paid animal');
+  await frame.evaluate(()=>{
+   game.account.data.growingEggs=[1,2].map(i=>({id:`merge:qa-${i}`,name:'Chicken',weightKg:10,sizeMult:1,duration:60,readyAt:Date.now()+60000,position:[i,0,0]}));
+   game.inventoryUI.render(game.inventoryUI.read());
+  });
+  await frame.locator('.inventory-header-action').click();await page.getByRole('button',{name:'成功',exact:true}).click();await frame.waitForFunction(()=>!game.commerce.busy);
+  assert.ok(await frame.evaluate(()=>game.account.data.growingEggs.every(e=>e.readyAt<=Date.now())));checks.push('Grow All header pays and matures both selected eggs');
+  await frame.evaluate(()=>{game.inventoryUI.close();game.account.data.pastureLedger.pending=1000;game.pasture.offline.update();});
+  await buy(3712778476);
+  assert.equal(await frame.evaluate(()=>game.account.data.cash),102100);assert.equal(await frame.evaluate(()=>game.player.inputLocked),false);checks.push('offline doubles frozen award and unlocks movement');
+  await frame.evaluate(()=>{game.inventoryUI.close();game.shopUI.open();game.shopUI.gui.scroll.scrollTop=0;});
+  await page.screenshot({path:'preview-commerce-shop.png'});
+  const outline=await frame.evaluate(()=>game.shopUI.gui.texts.filter(r=>!r.text.hidden).every(r=>getComputedStyle(r.text).webkitTextStrokeColor==='rgb(0, 0, 0)'));
+  assert.equal(outline,true);checks.push('Shop G prices retain black outlines');
+  assert.equal(await frame.locator('[data-source-path*="Gift"]').count(),0);
+  await frame.evaluate(async()=>{game.account.save();await game.account.storage.flush();});
+  await page.getByRole('button',{name:'横屏',exact:true}).click();
+  await page.waitForTimeout(1000);
+  await frame.waitForFunction(()=>window.game?.commerce,{},{timeout:60000});
+  await frame.evaluate(()=>game.shopUI.open());
+  await page.screenshot({path:'preview-commerce-mobile.png'});
+  assert.deepEqual(errors,[]);fs.writeFileSync('../docs/validation/shop/commerce-browser-validation.json',JSON.stringify({checks,restored,errors,mockOnly:true},null,2));
+  console.log(JSON.stringify({checks,errors},null,2));
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

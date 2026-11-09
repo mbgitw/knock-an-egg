@@ -1,0 +1,21 @@
+{
+  "name": "@cysj/room",
+  "private": true,
+  "version": "0.14.11",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit -p ./tsconfig.json",
+    "test": "npm run typecheck && node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

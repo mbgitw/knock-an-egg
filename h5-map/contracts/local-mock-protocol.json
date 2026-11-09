@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "local_mock_protocol_version": "2.1.0",
+  "transport": "local_mock_websocket",
+  "websocket_path": "/ws",
+  "health_path": "/health",
+  "config_path": "/config",
+  "room_scheduler": {
+    "max_concurrent_rooms": 1,
+    "max_sequential_rooms": 1000,
+    "initial_state": "idle",
+    "create_trigger": "first_admission",
+    "ticket_grace_millis": 15000,
+    "reconnect_grace_millis": 15000,
+    "empty_room_grace_millis": 1000,
+    "bots_keep_room_alive": false,
+    "dispose_reason_on_empty": "shutdown"
+  },
+  "room_data_tunnel": {
+    "field": "frame_base64",
+    "decoded_format": "CYR1",
+    "note": "仅本地 WebSocket 隧道使用 base64；线上 DataChannel 直接发送二进制帧"
+  },
+  "request_types": [
+    "ping",
+    "auth",
+    "match_join_room",
+    "match_join_pool",
+    "match_join_rank_pool",
+    "match_ticket_get",
+    "room_get",
+    "room_credential",
+    "local_room_join",
+    "local_room_data",
+    "local_room_leave"
+  ],
+  "push_types": [
+    "match_ticket_updated",
+    "local_room_message"
+  ],
+  "not_simulated": [
+    "matchmaking_algorithm",
+    "party",
+    "lobby",
+    "invites",
+    "real_auth",
+    "gateway",
+    "webrtc",
+    "turn",
+    "distributed_recovery",
+    "capacity",
+    "security_isolation"
+  ]
+}

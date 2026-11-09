@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Index Claim 隔离验收</title><link rel="stylesheet" href="gameplay/index-ui.css"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script><style>body{background:#42614e}#status{position:fixed;bottom:4px;color:white;z-index:30}</style></head><body><canvas tabindex="0"></canvas><output id="status"></output><script type="module">
+import {GameIndexUI} from './gameplay/index-ui.js';
+import {BankFeedback} from './gameplay/bank-feedback.js';
+import {TreadmillState} from './treadmill-state.js';
+let saved;const storage={getItem:()=>saved,setItem:(k,v)=>saved=v};
+let account=new TreadmillState({storage});account.data.cash=0;account.data.power=88;account.data.index.discovered=['Cat','Anteater'];
+const ui=new GameIndexUI({account,canvas:document.querySelector('canvas')});ui.open();
+const feedback=new BankFeedback({fov:70,updateProjectionMatrix(){}});ui.pickaxes={bankFeedback:feedback,close(){},clock:{cancel(){}},refresh(){}};
+let last=performance.now();function frame(now){feedback.update(Math.min(.1,(now-last)/1000));last=now;requestAnimationFrame(frame);}requestAnimationFrame(frame);
+const output=document.querySelector('output');
+setInterval(()=>{ui.update(.25);output.textContent=JSON.stringify({power:account.data.power,cash:account.data.cash,claimed:account.data.index.claimed,reloaded:saved?new TreadmillState({storage}).data.index.claimed:[]});},100);
+</script></body></html>

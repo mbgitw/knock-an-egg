@@ -1,0 +1,7 @@
+{
+  "gameId": "GD:409930:13",
+  "gatewayUrl": "wss://builda-online.poni.fun/ws",
+  "defaultQueueName": "default",
+  "localGatewayUrl": "ws://127.0.0.1:7350/ws",
+  "revision": 3
+}

@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><title>原版动物变体对照</title><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script><style>body{margin:0;background:#a9c4d0;font:24px sans-serif}header{position:absolute;top:15px;width:100%;display:flex;justify-content:space-around;color:white;-webkit-text-stroke:1px black;paint-order:stroke fill}output{position:absolute;bottom:10px;left:15px}</style></head><body><header><b>Normal</b><b>Gold</b><b>Diamond</b></header><output>加载原模型…</output><script type="module">
+import * as THREE from 'three';import {EggWorld} from './gameplay/egg-world.js';
+const scene=new THREE.Scene();scene.background=new THREE.Color('#a9c4d0');scene.add(new THREE.HemisphereLight(0xffffff,0x607080,2));const light=new THREE.DirectionalLight(0xffffff,2);light.position.set(4,10,6);scene.add(light);
+const camera=new THREE.PerspectiveCamera(35,innerWidth/innerHeight,.1,100);camera.position.set(0,9,22);camera.lookAt(0,1,0);
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(innerWidth,innerHeight);document.body.append(renderer.domElement);
+const world=Object.create(EggWorld.prototype);world.petCache=new Map();let index=0;
+for(const variant of ['Normal','Gold','Diamond']){const model=(await world.petTemplate('CrystalDragon',variant)).clone(true);model.position.x=(index++-1)*6;model.rotation.y=.4;scene.add(model);}
+renderer.render(scene,camera);document.querySelector('output').textContent='CrystalDragon · 原模板逐部件颜色 · 三种材质互不污染';document.body.dataset.ready='true';
+</script></body></html>

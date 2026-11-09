@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inventory UI isolated preview</title><link rel="stylesheet" href="gameplay/inventory-ui.css"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script><style>body{margin:0;background:#abc9a1}canvas{width:100vw;height:100vh;display:block;background:linear-gradient(#bed5e4 48%,#80ad58 48%)}.checks{position:fixed;top:10px;left:10px;z-index:30}</style></head><body><canvas tabindex="0"></canvas><nav class="checks"><button id="sample-eggs">蛋列表</button><button id="sample-pets">宠物列表</button><button id="empty">空列表</button></nav><script type="module">
+import {GameInventoryUI} from './gameplay/inventory-ui.js';
+const canvas=document.querySelector('canvas');let empty=false;
+const snapshot=()=>({capacity:8,cost:10000,pets:empty?[]:['GoldenRetriver','Badger','Anteater','Chicken','Cat'].map((name,i)=>({id:String(i),name,cashPerSecond:500/(i+1)})),eggs:empty?[]:Array.from({length:7},(_,i)=>({id:String(i),name:['Chicken','Cat','Badger'][i%3],remaining:i*119,duration:1200,ready:i===0}))});
+window.inventoryUI=new GameInventoryUI({canvas,snapshot});
+document.querySelector('#sample-eggs').onclick=()=>{empty=false;inventoryUI.open('eggs')};document.querySelector('#sample-pets').onclick=()=>{empty=false;inventoryUI.open('pets')};document.querySelector('#empty').onclick=()=>{empty=true;inventoryUI.open(inventoryUI.kind)};
+inventoryUI.open(location.hash==='#pets'?'pets':'eggs');
+</script></body></html>

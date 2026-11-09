@@ -1,0 +1,45 @@
+@font-face{font-family:BackpackGotham;src:url('./shop-ui/Montserrat-Bold.ttf');font-weight:800;font-display:swap}
+#original-backpack{position:fixed;inset:0;pointer-events:none;z-index:20;font-family:BackpackGotham,sans-serif;color:white;user-select:none}
+#original-backpack [hidden]{display:none!important}
+#original-backpack button,#original-backpack input{pointer-events:auto;color:white;font:800 20px BackpackGotham,sans-serif;cursor:pointer}
+#backpack-toggle{position:absolute;left:max(165px,12vw);top:12px;width:44px;height:44px;border:0;border-radius:12px;background:#0009;display:grid;place-items:center}
+#backpack-toggle img{width:32px;height:32px;object-fit:contain}
+#backpack-panel{position:absolute;left:50%;bottom:calc(5px + min(8.529vw,8.982dvh));width:min(49.197vw,82.96dvh);height:min(23.393vw,39.1837dvh);transform:translateX(-50%);background:#0008;border-radius:7px;pointer-events:auto;container-type:size;outline:none}
+#backpack-panel h2{position:absolute;top:2.5%;left:1.5%;height:8.159%;margin:0;font:800 7cqh/1 BackpackGotham,sans-serif;text-shadow:1px 1px 2px black}
+#backpack-capacity{position:absolute;top:11.75%;left:1.5%;font:800 4.9cqh/1 BackpackGotham,sans-serif}
+#original-backpack #backpack-search{position:absolute;right:1.15%;top:2.5%;width:23.38%;height:8.739%;box-sizing:border-box;border:0;border-radius:4px;background:#64646480;font-size:4.5cqh;padding:0 6px;cursor:text}
+#backpack-search::placeholder{color:#eee}
+#backpack-panel nav{position:absolute;right:102.5%;top:0;width:12.2135%;display:flex;flex-direction:column;gap:8px}
+#backpack-panel nav button{aspect-ratio:1;position:relative;background:#0008;border:0;border-radius:5px;padding:0}
+#backpack-panel nav button[aria-pressed=true]{outline:2px solid white}
+#backpack-panel nav img{position:absolute;width:65%;height:65%;object-fit:contain;left:17.5%;top:5%}
+#backpack-panel nav span{position:absolute;left:0;width:100%;bottom:9%;font-size:4cqh;text-shadow:1px 1px black}
+#original-backpack #backpack-sell,#original-backpack #backpack-cancel{position:absolute;top:-16.54%;height:14.04%;background:linear-gradient(#ff0000,#ca0000);border:3px solid #720000;border-radius:4px;box-shadow:inset 0 0 0 1.5px #ff2f2f;font-size:6.7cqh;paint-order:stroke fill;-webkit-text-stroke:2px #000}
+#backpack-sell{left:0;width:19.1867%}
+#backpack-sell[aria-pressed=true]{outline:3px solid white}
+#backpack-cancel{left:21.435%;width:6.8086%;padding:0}
+#backpack-value{position:absolute;right:0;top:-16.54%;height:14.04%;width:30.397%;background:#217d0080;border:2px solid #00ff00;border-radius:5px;font-size:8cqh;text-align:center;color:#aaff00;paint-order:stroke fill;-webkit-text-stroke:2px black}
+#backpack-value small{position:absolute;bottom:120%;left:0;width:100%;font-size:4.5cqh;color:white}
+#backpack-grid{position:absolute;left:1.25%;top:17.633%;width:97.5%;height:79.867%;display:flex;flex-wrap:wrap;align-content:flex-start;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ddd #0004}
+.backpack-cell{position:relative;width:16.6%;aspect-ratio:1;flex:none}
+#original-backpack .backpack-pet{position:absolute;left:7.5%;top:7.5%;width:85%;height:85%;border:0;border-radius:6px;background:#0008;padding:0;container-type:size}
+.backpack-pet img,.backpack-drag img{position:absolute;left:5%;top:5%;width:90%;height:90%;object-fit:contain;pointer-events:none}
+#original-backpack .backpack-pet .tool-name{position:absolute;left:5%;bottom:5%;width:90%;height:30%;font-size:14cqw;line-height:1;text-align:center;display:flex;justify-content:center;align-items:center;-webkit-text-stroke:2px black;paint-order:stroke fill;overflow-wrap:anywhere}
+#original-backpack .backpack-pet[aria-pressed=true]:not(.sale-selected),#pickaxe-ui .backpack-slot[aria-pressed=true]:not(.sale-selected){outline:2px solid white}
+#original-backpack .backpack-pet.sale-selected,#pickaxe-ui .backpack-slot.sale-selected{box-shadow:0 0 0 3px #ff3030;transform:scale(.85);background:#93000055}
+#pickaxe-ui .backpack-slot .tool-name{font-size:14cqw}
+#pickaxe-ui .backpack-empty{background:#0008;opacity:.5}
+body[data-backpack-open=true] #pickaxe-ui #auto-pickaxe{display:none}
+#backpack-info{position:fixed;width:min(15vw,230px);min-width:130px;aspect-ratio:1.95548;background:#353535;border:3px solid black;border-radius:6px;box-shadow:inset 0 0 0 1.5px #4b4b4b;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;text-align:center;pointer-events:none;font-size:clamp(11px,1.3vw,24px);text-shadow:1px 1px black}
+#backpack-info b{color:#adff00}#backpack-info span{color:#ddd}
+.backpack-drag{position:fixed;width:75px;height:75px;transform:translate(-50%,-50%);pointer-events:none!important;background:#0008;border:2px solid white;border-radius:6px;z-index:200;color:white;font:800 13px BackpackGotham,sans-serif}
+.backpack-drag .tool-name{position:absolute;bottom:5%;left:0;width:100%;text-align:center}.backpack-drag kbd{display:none}
+body[data-carrying-animal=true] #original-backpack{display:none!important}
+@media(pointer:coarse){#backpack-panel{width:min(72vw,110dvh);height:min(44vw,57dvh);bottom:calc(12dvh + 10px)}#backpack-toggle{left:max(120px,12vw);top:8px;width:36px;height:36px}#backpack-info{display:none}#backpack-panel nav{width:11%;right:101.5%}.backpack-cell{width:20%}}
+@media(max-width:600px) and (orientation:portrait){#backpack-panel{width:78vw;height:48vh;bottom:calc(12vw + 12px)}#backpack-panel nav{width:10%;right:102%}.backpack-cell{width:25%}#backpack-panel nav span{font-size:9px}#backpack-panel h2{font-size:19px}#original-backpack #backpack-sell{font-size:16px;width:24%}#original-backpack #backpack-cancel{left:27%;width:11%;font-size:16px}#backpack-value{font-size:20px}#backpack-capacity{font-size:12px}#original-backpack #backpack-search{font-size:12px;width:30%}}
+
+@media(max-width:700px){#pickaxe-ui{--tool-size:min(14vw,10dvh)}#pickaxe-ui .pickaxe-hotbar{max-width:98vw}}
+
+#backpack-panel h2{font-style:italic}
+
+#backpack-toggle{top:calc(12px + var(--host-safe-top,0px));margin-left:var(--host-safe-left,0px)}

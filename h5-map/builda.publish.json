@@ -1,0 +1,542 @@
+{
+  "assetsBaseUrl": "https://builda-godot-play.poni.fun/cysj2/release/assets/GD_409930_13/ast_c9e269d7f6391abd743012c8a343dc51/",
+  "assetsManifestUrl": "https://builda-godot-play.poni.fun/cysj2/release/assets/GD_409930_13/ast_c9e269d7f6391abd743012c8a343dc51/assets.json",
+  "assetsVersion": "ast_c9e269d7f6391abd743012c8a343dc51",
+  "category": "leisure",
+  "coverKind": "palette",
+  "coverPalette": "ember",
+  "desc": "七人牧场联机开发草稿。",
+  "engine": "h5",
+  "minChromeMajor": 81,
+  "minIOSMajor": 15,
+  "orientation": "landscape",
+  "payPoints": [
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065712",
+      "payName": "power +150000",
+      "price": 295
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065732",
+      "payName": "power +1000000",
+      "price": 995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065754",
+      "payName": "power +10000000",
+      "price": 2295
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714136238",
+      "payName": "power +50000000",
+      "price": 3995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065818",
+      "payName": "power +250000000",
+      "price": 5995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065829",
+      "payName": "power +1000000000",
+      "price": 10745
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065877",
+      "payName": "cash +100000",
+      "price": 120
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065889",
+      "payName": "cash +500000",
+      "price": 245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065913",
+      "payName": "cash +2000000",
+      "price": 395
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065940",
+      "payName": "cash +20000000",
+      "price": 1245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065974",
+      "payName": "cash +100000000",
+      "price": 2495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715696847",
+      "payName": "tokens +500",
+      "price": 445
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715696884",
+      "payName": "tokens +1500",
+      "price": 1245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715696916",
+      "payName": "tokens +5000",
+      "price": 1995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715696974",
+      "payName": "tokens +12500",
+      "price": 4495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715697004",
+      "payName": "tokens +40000",
+      "price": 14000
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065679",
+      "payName": "x2 Swing Speed",
+      "price": 1495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714065639",
+      "payName": "x2 Cash",
+      "price": 995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3717726136",
+      "payName": "x2 Growth",
+      "price": 1995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714597365",
+      "payName": "WalkSpeedPotion 15min",
+      "price": 145
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714597383",
+      "payName": "MoneyPotion 15min",
+      "price": 270
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714597430",
+      "payName": "TreadmillPotion 15min",
+      "price": 245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715295141",
+      "payName": "Fallen Angel Egg ×1",
+      "price": 495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715295747",
+      "payName": "Fallen Angel Egg ×3",
+      "price": 1245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715295845",
+      "payName": "Fallen Angel Egg ×10",
+      "price": 3995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3715295933",
+      "payName": "Fallen Angel Egg ×50",
+      "price": 17495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779280",
+      "payName": "Speed ×2",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779335",
+      "payName": "Speed ×4",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779382",
+      "payName": "Speed ×8",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779701",
+      "payName": "Speed ×16",
+      "price": 170
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779720",
+      "payName": "Speed ×32",
+      "price": 395
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779800",
+      "payName": "Speed ×64",
+      "price": 645
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779914",
+      "payName": "Speed ×128",
+      "price": 995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712779982",
+      "payName": "Speed ×256",
+      "price": 1745
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712780014",
+      "payName": "Speed ×512",
+      "price": 3245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712780048",
+      "payName": "Speed ×1024",
+      "price": 4645
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3716644340",
+      "payName": "Speed ×2048",
+      "price": 9995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3716644368",
+      "payName": "Speed ×4096",
+      "price": 17495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712394693",
+      "payName": "Stone Pickaxe",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712394722",
+      "payName": "Iron Pickaxe",
+      "price": 145
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712394822",
+      "payName": "Golden Pickaxe",
+      "price": 245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712394867",
+      "payName": "Diamond Pickaxe",
+      "price": 445
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712394907",
+      "payName": "Strawberry Pickaxe",
+      "price": 645
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712394966",
+      "payName": "Cactus Pickaxe",
+      "price": 845
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712395029",
+      "payName": "Lightning Pickaxe",
+      "price": 1245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712395053",
+      "payName": "Candy Pickaxe",
+      "price": 1495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712395085",
+      "payName": "Rainbow Pickaxe",
+      "price": 1745
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712803837",
+      "payName": "Crystal Pickaxe",
+      "price": 2145
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712803918",
+      "payName": "Demon Pickaxe",
+      "price": 2495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712803943",
+      "payName": "Hacker Pickaxe",
+      "price": 3145
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712803963",
+      "payName": "Ufo Pickaxe",
+      "price": 4295
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712803986",
+      "payName": "Secret Pickaxe",
+      "price": 4995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3713309298",
+      "payName": "Cool Pickaxe",
+      "price": 6245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3713309328",
+      "payName": "Galaxy Pickaxe",
+      "price": 7995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3713309347",
+      "payName": "Celestial Pickaxe",
+      "price": 9995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3717812196",
+      "payName": "Sci Fi Pickaxe",
+      "price": 13995
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3717812231",
+      "payName": "Enchanted Pickaxe",
+      "price": 17495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147430",
+      "payName": "White Trail",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147451",
+      "payName": "Blue Trail",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147473",
+      "payName": "Green Trail",
+      "price": 195
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147489",
+      "payName": "Purple Trail",
+      "price": 395
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147504",
+      "payName": "Red Trail",
+      "price": 645
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147529",
+      "payName": "Golden Trail",
+      "price": 895
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147550",
+      "payName": "Rainbow Trail",
+      "price": 1245
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147575",
+      "payName": "Galactic Trail",
+      "price": 1945
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147628",
+      "payName": "Secret Trail",
+      "price": 2495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147674",
+      "payName": "Laser Trail",
+      "price": 3495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714147688",
+      "payName": "Moonlight Trail",
+      "price": 4495
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714392668",
+      "payName": "Skip one egg",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714392730",
+      "payName": "Skip one egg",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714392757",
+      "payName": "Skip one egg",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714392785",
+      "payName": "Skip one egg",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714670663",
+      "payName": "Skip one egg",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714670696",
+      "payName": "Skip one egg",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714670776",
+      "payName": "Skip one egg",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714939509",
+      "payName": "Grow All Eggs",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714939764",
+      "payName": "Grow All Eggs",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714939804",
+      "payName": "Grow All Eggs",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714939855",
+      "payName": "Grow All Eggs",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3714939888",
+      "payName": "Grow All Eggs",
+      "price": 100
+    },
+    {
+      "grantBy": "room",
+      "payId": "egg_3712778476",
+      "payName": "Double Offline Cash",
+      "price": 100
+    }
+  ],
+  "rankBoards": [
+    {
+      "cycleType": "forever",
+      "displayName": "Top Money",
+      "maxScore": 9999999999,
+      "minScore": 0,
+      "rankId": "pasture_income_v1",
+      "sortType": "desc"
+    },
+    {
+      "cycleType": "forever",
+      "displayName": "Top Speed",
+      "maxScore": 9999999999,
+      "minScore": 0,
+      "rankId": "training_power_v1",
+      "sortType": "desc"
+    },
+    {
+      "cycleType": "forever",
+      "displayName": "Top Playtime",
+      "maxScore": 9999999999,
+      "minScore": 0,
+      "rankId": "playtime_seconds_v1",
+      "sortType": "desc"
+    }
+  ],
+  "tagline": "一起敲蛋、收藏动物并成长自己的牧场。",
+  "tags": [
+    "h5"
+  ],
+  "title": "Knock an Egg",
+  "buildEntry": "index.html",
+  "bundleSize": 51995140,
+  "buildSize": 163899779,
+  "bundleUrl": "https://builda-godot-play.poni.fun/cysj2/release/bundles/b702007c8d3d1324f862e63eb238562c.zip",
+  "bundleEntry": "index.html",
+  "buildPrefix": "builds/b702007c8d3d1324f862e63eb238562c",
+  "bundleVersion": "b702007c8d3d1324f862e63eb238562c",
+  "bundleMd5": "57494106d8150054035c8d4673ddb597",
+  "onlineCompatibilityRevision": 3,
+  "sdkVersion": "0.12.1"
+}

@@ -1,0 +1,29 @@
+/* Chrome 81 has grid gap but not flex gap or aspect-ratio. Preserve the
+   established layouts with explicit spacing; modern engines keep native gap. */
+/* Older Chromium paints the stroke over HTML glyphs. Use a thin real black
+   outline so small letters retain their fill; never simulate it with shadows. */
+html.compat-text-outline body *{-webkit-text-stroke-width:.03em!important;-webkit-text-stroke-color:#000!important}
+@supports not (aspect-ratio:1) {
+  #game-index-ui .game-shortcut{display:flex;align-items:center}
+  #game-index-ui .game-shortcut img{flex:none}
+  #game-index-ui .game-shortcut b{margin-left:calc(var(--shortcut-width)*.045)}
+  #backpack-toggle{display:flex;align-items:center;justify-content:center}
+  #backpack-panel nav>button+button{margin-top:8px}
+  .game-shortcuts>*+*{margin-top:10px}
+  .inventory-shortcuts>*+*{margin-top:calc(var(--side)*.25)}
+  .index-tabs>button+button{margin-top:calc(var(--compat-cqw,1vw)*1.4)}
+  #training-ui .stats>*+*{margin-top:2px}
+  #training-ui .stat-card>*+*{margin-left:7px}
+  #training-ui #slow-mode>*+*{margin-left:calc(var(--shortcut-width)*.06)}
+  #pickaxe-ui .pickaxe-hotbar>*+*{margin-left:calc(var(--tool-size)*.05)}
+  .settings-language-options>button+button{margin-left:10px}
+  .index-reward-icons>*+*{margin-left:10%}
+  .original-power>*+*{margin-left:3%}
+  #zone-entry .zone-entry-title-content>*+*{margin-left:calc(var(--compat-cqw,1vw)*2.27)}
+  #zone-entry .zone-entry-speed-content>*+*{margin-left:calc(var(--compat-cqh,1vh)*.25)}
+  #pasture-offline .offline-price .source-text>*+*{margin-left:10px}
+  .merge-selection>*{margin:7px}
+  .merge-selection{padding:5px}
+  #backpack-info>*+*{margin-top:4px}
+  @media(max-width:760px) and (orientation:landscape){#training-ui .stats>*+*{margin-top:4px}}
+}

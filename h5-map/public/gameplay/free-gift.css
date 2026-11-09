@@ -1,0 +1,14 @@
+@font-face{font-family:ShopRubik;src:url('./shop-ui/rubik-extra-bold.ttf');font-weight:800 900;font-display:swap}
+.gift-message{z-index:10}
+#free-gift{position:fixed;inset:0;z-index:18;user-select:none;pointer-events:auto}
+#free-gift[hidden],#free-gift [hidden]{display:none!important}
+.gift-stage{position:absolute;left:50%;top:50%;width:1000px;height:573.9075px;transform:translate(-50%,-50%) scale(var(--gift-scale,1));transform-origin:center;outline:none;isolation:isolate}
+#free-gift .source-gui{position:absolute;box-sizing:border-box;margin:0;padding:0;border:0;pointer-events:none;isolation:isolate;font:inherit;color:inherit;outline:none}
+#free-gift button.source-gui{cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+#free-gift button:focus-visible{outline:3px solid white;outline-offset:4px}
+#free-gift .source-text{display:block;width:100%;line-height:1.06;pointer-events:none;flex:none}
+#free-gift .source-image{position:absolute;inset:0;pointer-events:none;background-position:center}
+#free-gift .source-scroll{overflow-y:auto!important;overflow-x:hidden!important;pointer-events:auto;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:thin;scrollbar-color:#fff8 transparent}
+#free-gift .source-content{position:relative;width:100%;pointer-events:none}
+
+.gift-message{position:absolute;top:440px;width:95%;left:2.5%;text-align:center;color:white;font:bold 18px Arial;-webkit-text-stroke:2px black;paint-order:stroke fill;pointer-events:none}.free-gift-label{position:fixed;transform:translate(-50%,-100%);border:0;background:none;font:italic 900 48px ShopRubik,Arial;color:#b9ff00;-webkit-text-stroke:6px black;paint-order:stroke fill;z-index:5;cursor:pointer}.free-gift-label[hidden]{display:none}#free-gift button:disabled{filter:grayscale(.7);cursor:default}

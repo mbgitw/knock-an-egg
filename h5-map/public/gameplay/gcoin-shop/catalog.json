@@ -1,0 +1,259 @@
+{
+  "products": [
+    {
+      "group": "SpeedPacks",
+      "card": "Speed_Pack_1",
+      "id": 3714065712,
+      "amount": 150000
+    },
+    {
+      "group": "SpeedPacks",
+      "card": "Speed_Pack_2",
+      "id": 3714065732,
+      "amount": 1000000
+    },
+    {
+      "group": "SpeedPacks",
+      "card": "Speed_Pack_3",
+      "id": 3714065754,
+      "amount": 10000000
+    },
+    {
+      "group": "SpeedPacks",
+      "card": "Speed_Pack_4",
+      "id": 3714136238,
+      "amount": 50000000
+    },
+    {
+      "group": "SpeedPacks",
+      "card": "Speed_Pack_5",
+      "id": 3714065818,
+      "amount": 250000000
+    },
+    {
+      "group": "SpeedPacks",
+      "card": "Speed_Pack_6",
+      "id": 3714065829,
+      "amount": 1000000000
+    },
+    {
+      "group": "CashPacks",
+      "card": "Money_Pack_1",
+      "id": 3714065877,
+      "amount": 100000
+    },
+    {
+      "group": "CashPacks",
+      "card": "Money_Pack_2",
+      "id": 3714065889,
+      "amount": 500000
+    },
+    {
+      "group": "CashPacks",
+      "card": "Money_Pack_3",
+      "id": 3714065913,
+      "amount": 2000000
+    },
+    {
+      "group": "CashPacks",
+      "card": "Money_Pack_4",
+      "id": 3714065940,
+      "amount": 20000000
+    },
+    {
+      "group": "CashPacks",
+      "card": "Money_Pack_5",
+      "id": 3714065974,
+      "amount": 100000000
+    },
+    {
+      "group": "FallenTokenPacks",
+      "card": "Pack_1",
+      "id": 3715696847,
+      "amount": 500
+    },
+    {
+      "group": "FallenTokenPacks",
+      "card": "Pack_2",
+      "id": 3715696884,
+      "amount": 1500
+    },
+    {
+      "group": "FallenTokenPacks",
+      "card": "Pack_3",
+      "id": 3715696916,
+      "amount": 5000
+    },
+    {
+      "group": "FallenTokenPacks",
+      "card": "Pack_4",
+      "id": 3715696974,
+      "amount": 12500
+    },
+    {
+      "group": "FallenTokenPacks",
+      "card": "Pack_5",
+      "id": 3715697004,
+      "amount": 40000
+    },
+    {
+      "group": "Gamepasses",
+      "card": "x2 Swing Speed",
+      "id": 3714065679,
+      "owned": "FastSwingOwned"
+    },
+    {
+      "group": "Gamepasses",
+      "card": "x2 Cash",
+      "id": 3714065639,
+      "owned": "DoubleCashOwned"
+    },
+    {
+      "group": "Gamepasses",
+      "card": "x2 Growth",
+      "id": 3717726136,
+      "owned": "DoubleGrowthOwned"
+    },
+    {
+      "group": "Potions",
+      "card": "WalkSpeedPotion",
+      "id": 3714597365,
+      "duration": 900,
+      "multiplier": 1.25
+    },
+    {
+      "group": "Potions",
+      "card": "MoneyPotion",
+      "id": 3714597383,
+      "duration": 900,
+      "multiplier": 2.0
+    },
+    {
+      "group": "Potions",
+      "card": "TreadmillPotion",
+      "id": 3714597430,
+      "duration": 900,
+      "multiplier": 2.0
+    },
+    {
+      "group": "Featured",
+      "card": "EggsPack",
+      "id": 3715295141,
+      "amount": 1,
+      "purchase": "Purchase1Egg"
+    },
+    {
+      "group": "Featured",
+      "card": "EggsPack",
+      "id": 3715295747,
+      "amount": 3,
+      "purchase": "Purchase3Eggs"
+    },
+    {
+      "group": "Featured",
+      "card": "EggsPack",
+      "id": 3715295845,
+      "amount": 10,
+      "purchase": "Purchase10Eggs"
+    },
+    {
+      "group": "Featured",
+      "card": "EggsPack",
+      "id": 3715295933,
+      "amount": 50,
+      "purchase": "Purchase50Eggs"
+    }
+  ],
+  "speedTiers": [
+    {
+      "multiplier": 2,
+      "id": 3712779280
+    },
+    {
+      "multiplier": 4,
+      "id": 3712779335
+    },
+    {
+      "multiplier": 8,
+      "id": 3712779382
+    },
+    {
+      "multiplier": 16,
+      "id": 3712779701
+    },
+    {
+      "multiplier": 32,
+      "id": 3712779720
+    },
+    {
+      "multiplier": 64,
+      "id": 3712779800
+    },
+    {
+      "multiplier": 128,
+      "id": 3712779914
+    },
+    {
+      "multiplier": 256,
+      "id": 3712779982
+    },
+    {
+      "multiplier": 512,
+      "id": 3712780014
+    },
+    {
+      "multiplier": 1024,
+      "id": 3712780048
+    },
+    {
+      "multiplier": 2048,
+      "id": 3716644340
+    },
+    {
+      "multiplier": 4096,
+      "id": 3716644368
+    }
+  ],
+  "odds": [
+    70,
+    18,
+    9.9,
+    1,
+    1,
+    0.1
+  ],
+  "animals": [
+    "AngelAnky",
+    "AngelTrike",
+    "AngelMegalodon",
+    "AngelTRex",
+    "AngelDragon",
+    "AngelHydra"
+  ],
+  "animalInfo": [
+    {
+      "name": "Angel Bat",
+      "rarity": "Secret"
+    },
+    {
+      "name": "Angel Scorpion",
+      "rarity": "Secret"
+    },
+    {
+      "name": "Angel Hound",
+      "rarity": "Celestial"
+    },
+    {
+      "name": "Angel Golem",
+      "rarity": "Celestial"
+    },
+    {
+      "name": "Angel Dragon",
+      "rarity": "Inferno"
+    },
+    {
+      "name": "Angel Cerberus",
+      "rarity": "Inferno"
+    }
+  ]
+}

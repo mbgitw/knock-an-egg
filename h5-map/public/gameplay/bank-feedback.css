@@ -1,0 +1,12 @@
+@font-face{font-family:BankRubik;src:url('./shop-ui/rubik-extra-bold.ttf');font-weight:800;font-display:swap}
+#bank-new-items{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);width:min(65.0696158vw,90.983dvh);height:min(8.47928vw,11.8563183dvh);display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-start;pointer-events:none;z-index:18;user-select:none}
+.bank-item{position:relative;height:100%;aspect-ratio:1;flex:none;isolation:isolate}
+.bank-item-display{position:absolute;left:50%;top:50%;width:90%;height:90%;border-radius:1%;background:linear-gradient(0deg,#009dff,#00ffff);box-shadow:0 0 0 3px #161a21;transform:translate(-50%,-50%) scale(0);container-type:size}
+.bank-item-display:before{content:'';position:absolute;inset:0;background:url('./inventory-ui/studs.png') 0 0/150% 150%;opacity:.25;pointer-events:none}
+.bank-item-display:after{content:'';position:absolute;inset:0;border:8px solid transparent;border-image:url('./inventory-ui/bevel.png') 32 fill stretch;pointer-events:none}
+.bank-item-art{position:absolute;left:5%;top:5%;width:90%;height:90%;object-fit:contain;z-index:1}
+.bank-item-name{position:absolute;left:50%;bottom:5%;width:95%;height:30%;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;font:800 30cqh/1 BankRubik,sans-serif;overflow-wrap:anywhere;-webkit-text-stroke:3px #161a21;paint-order:stroke fill;z-index:2;transform:translateX(-50%);transform-origin:center}
+.bank-item-glow{position:absolute;left:50%;top:50%;width:100%;height:100%;z-index:-1;pointer-events:none}
+.bank-item-ring{position:absolute;left:50%;top:50%;width:90%;height:90%;border:2px solid white;border-radius:1%;z-index:-1;pointer-events:none}
+#bank-reward-flash{position:fixed;inset:0;background:rgb(255,185,0);z-index:100;pointer-events:none}
+#bank-reward-flash[hidden]{display:none}

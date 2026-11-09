@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "resource_limits_version": "1.1.0",
+  "room_runtime": {
+    "memory_bytes": 67108864,
+    "message_frame_bytes": 65535,
+    "checkpoint_bytes": 4194304,
+    "fuel_warning_per_callback": 200000000,
+    "fuel_per_callback": 2000000000,
+    "host_commands_per_callback": 256,
+    "host_output_bytes_per_callback": 1048576,
+    "host_output_bytes_per_second": 4194304
+  },
+  "room_network": {
+    "upstream_warning_bytes_per_second": 10240,
+    "downstream_warning_bytes_per_second": 40960,
+    "upstream_bytes_per_second": 20480,
+    "downstream_bytes_per_second": 81920,
+    "warning_window_millis": 5000,
+    "long_window_millis": 5000,
+    "short_window_millis": 1000,
+    "short_window_rate_multiplier": 2
+  },
+  "room_logs": {
+    "message_bytes": 2048,
+    "events_per_second": 20,
+    "message_bytes_per_second": 16384,
+    "buffer_bytes": 262144,
+    "query_entries": 200,
+    "retention_days": 7
+  },
+  "source_upload": {
+    "typescript_single_file_bytes": 16777216,
+    "workspace_files": 2048,
+    "workspace_uncompressed_bytes": 67108864,
+    "workspace_archive_bytes": 16777216
+  },
+  "configuration": {
+    "party_keys": 32,
+    "party_members_per_key": 10,
+    "match_keys": 64,
+    "players_per_room": 50,
+    "confirm_timeout_seconds": 60,
+    "snapshot_schema_version": 65535
+  },
+  "enforcement": {
+    "structural_limits_reject_or_close": true,
+    "log_overflow_drops_only": true,
+    "routine_cpu_fuel_and_egress_are_observed": true,
+    "local_mock_proves_online_capacity": false
+  }
+}

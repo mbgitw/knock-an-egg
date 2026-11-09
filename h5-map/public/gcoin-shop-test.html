@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Shop UI verification</title><style>html,body{margin:0;width:100%;height:100%;background:#567d61}canvas{position:fixed;inset:0}nav{position:fixed;left:8px;top:8px;z-index:40;display:flex;gap:4px}button{padding:6px}output{position:fixed;bottom:8px;left:8px;color:white;font:12px monospace;z-index:40}</style><canvas></canvas><nav><button id="shop-button">Shop</button><button data-section="Splitter_GamePasses">Passes</button><button data-section="Splitter_SpeedPacks">Speed</button><button data-section="Splitter_CashPacks">Cash</button><button data-section="Splitter_Fallen_Tokens">Tokens</button><button data-section="Splitter_Potions">Potions</button><button id="verify">Verify</button></nav><output id="result"></output><script type="module">
+import {GameGcoinShopUI} from './gameplay/gcoin-shop-ui.js';
+const player={training:false,inputLocked:false,keys:new Set(),touches:new Map(),touchMove:{set(){}},controls:{enabled:true}},pickaxes={externalModal:null,auto:false,close(){},clock:{cancel(){}},refresh(){}},account={data:{cash:'12345',shop:{}},save(){throw Error('Shop must not save')}};
+let snapshot={};const original=JSON.stringify(account.data);
+window.shopUI=await GameGcoinShopUI.create({canvas:document.querySelector('canvas'),player,pickaxes,account,snapshot:()=>snapshot});shopUI.open();
+for(const b of document.querySelectorAll('[data-section]'))b.onclick=()=>shopUI.openSection(b.dataset.section);
+document.querySelector('#verify').onclick=()=>{
+ const results=[];const check=(name,ok)=>results.push({name,pass:!!ok});
+ check('26 catalog products',shopUI.products.length===26);check('38 distinct product IDs',new Set([...shopUI.catalog.products,...shopUI.catalog.speedTiers].map(p=>p.id)).size===38);check('community removed',!shopUI.gui.nodes.some(n=>/Community/i.test(n.path)));
+ check('input locked',player.inputLocked&&!player.controls.enabled&&pickaxes.externalModal===shopUI);
+ check('prices unavailable',shopUI.products.every(p=>p.price.text.textContent==='—'));
+ for(const tier of shopUI.catalog.speedTiers){snapshot={speedMultiplier:tier.multiplier/2};shopUI.refresh();check('speed tier '+tier.multiplier,shopUI.speed.purchase.el.dataset.productId===String(tier.id)&&shopUI.speed.after.text.textContent==='x'+tier.multiplier);}
+ snapshot={speedMultiplier:4096};shopUI.refresh();check('max speed',shopUI.speed.price.text.textContent==='MAXED');check('automatic multiplier width',shopUI.speed.before.rect.w>100&&shopUI.speed.after.rect.w>100);
+ const owned=shopUI.products.filter(p=>p.owned);snapshot={owned:owned.map(p=>p.owned)};shopUI.refresh();check('one-time owned states',owned.every(p=>p.price.text.textContent==='BOUGHT!'));
+ snapshot={};shopUI.refresh();check('gifting removed',!shopUI.gui.nodes.some(n=>/Gift/.test(n.path))&&!shopUI.giftFrame&&typeof shopUI.openGift==='undefined');
+ shopUI.showAnimal(0,shopUI.gui.nodes.find(n=>n.path.endsWith('/AnimalsDisplay/Animal3')).el);check('animal detail',shopUI.animalGui.byPath.get('/AnimalInfo/List/AnimalName').text.textContent==='Angel Bat'&&shopUI.animalGui.byPath.get('/AnimalInfo/List/Earnings').el.hidden);shopUI.hideAnimal();
+ shopUI.close();check('close unlocks input',!player.inputLocked&&player.controls.enabled&&pickaxes.externalModal===null);check('account unchanged',JSON.stringify(account.data)===original);shopUI.open();shopUI.gui.scroll.scrollTop=0;
+ document.querySelector('#result').textContent=JSON.stringify({passed:results.filter(r=>r.pass).length,total:results.length,failures:results.filter(r=>!r.pass)});document.querySelector('#result').dataset.results=JSON.stringify(results);
+};
+</script></html>
+

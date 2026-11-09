@@ -1,0 +1,23 @@
+{
+  "room": {
+    "room_id": "local-cf-room",
+    "room_name": "CF Room local lifecycle",
+    "game_id": "star-grab-demo",
+    "tick_rate": 20,
+    "max_players": 4,
+    "entry_kind": "matchmaking",
+    "activity_id": "local-cf-room",
+    "match_key": "cf-room",
+    "match_mode": "room",
+    "room_route": "star-grab",
+    "room_type": "authoritative"
+  },
+  "actors": [
+    { "player_id": "player-1", "seat_id": "seat-1", "team_id": "red" },
+    { "player_id": "player-2", "seat_id": "seat-2", "team_id": "blue" }
+  ],
+  "launch_context": {
+    "example": "cf_room_reuse",
+    "localOnly": true
+  }
+}

@@ -8,7 +8,7 @@ import {connectionDiagnostic} from './connection-diagnostic.js';
 import {AppearanceSender} from './appearance-sender.js';
 import * as THREE from 'three';
 import {RemoteAvatars} from './avatars.js';
-import {createPetModel,disposePetModel} from '../gameplay/pet-animation.js';
+import {createPetModel,disposePetModel} from '../gameplay/pet-culling.js';
 import {animalVisualScale} from '../gameplay/animal-attributes.js';
 import {CONFIG} from '../gameplay/config.js';
 import {inverseToolGrip} from '../gameplay/pickaxe-pose.js';
@@ -22,6 +22,7 @@ import {persistPreferences} from './preferences.js';
 import {OP} from './protocol.js';
 import {WeaponSwingPose} from '../gameplay/weapon-swing-pose.js';
 import {heldPickaxePose} from '../gameplay/pickaxe-pose.js';
+import {installReconnectNotice} from './reconnect-notice.js';
 
 export function installOnline(game,connection){
   const {account,player,scene,camera,plots,pickaxes,weapons,treadmills,animals,guards,pasture,merge,backpack,indexUI,trails,inventoryUI}=game;
@@ -54,6 +55,7 @@ export function installOnline(game,connection){
     if(ownLevel!==account.data.level&&!loadingMachine){loadingMachine=true;const level=account.data.level;treadmills.assets.instance(level,treadmills.ownMatrix).then(model=>{treadmills.own.dispose();treadmills.own=model;scene.add(model.root);ownLevel=level;}).finally(()=>loadingMachine=false);}
   };
   let roomEnded=false;
+  installReconnectNotice(connection);
   connection.observe((type,data)=>{
     if(type==='account')applyAccount(data);
     if(type==='players'){remote.reconcile(data,connection.self);plots.applyNetwork(data);}

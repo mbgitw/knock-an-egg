@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {WeaponAssets} from './weapon-assets.js';
 import {WeaponProgress} from './weapon-state.js';
+import {assignDataset,setAttr,setProp,setText} from '../dom-diff.js';
 import {WeaponSwingPose,WEAPON_SWING_DURATION,WEAPON_SWING_RECOVERY} from './weapon-swing-pose.js';
 
 export class WeaponSystem {
@@ -39,14 +40,15 @@ export class WeaponSystem {
     if(!this.assets)return;
     const item=this.assets.catalog.find(t=>t.tier===this.progress.data.selected);
     const label=this.slot.querySelector('span'),name=item.originalName||item.name;
-    label.textContent=name;label.classList.toggle('two-lines',name.length>8);this.slot.setAttribute('aria-label',name);
+    // Called every frame: only write DOM values that changed.
+    setText(label,name);label.classList.toggle('two-lines',name.length>8);setAttr(this.slot,'aria-label',name);
     const image=this.slot.querySelector('img'),url=new URL(`./index-ui/bat-${item.tier}.png`,import.meta.url).href;if(image.src!==url)image.src=url;
-    image.style.transform=item.tier===10?'rotate(40deg)':'';
-    this.slot.setAttribute('aria-pressed',String(!!this.equipped&&!this.player.training&&!this.player.equippedPet));this.slot.disabled=this.busy||this.pickaxes.busy||!!(this.player.carryingAnimal||this.player.training||(this.player.inputLocked&&this.pickaxes.externalModal!==this.pickaxes.backpack)||this.player.motor.externalMotion||this.pickaxes.modal||(this.pickaxes.externalModal&&this.pickaxes.externalModal!==this.pickaxes.backpack));
+    setProp(image.style,'transform',item.tier===10?'rotate(40deg)':'');
+    setAttr(this.slot,'aria-pressed',!!this.equipped&&!this.player.training&&!this.player.equippedPet);setProp(this.slot,'disabled',this.busy||this.pickaxes.busy||!!(this.player.carryingAnimal||this.player.training||(this.player.inputLocked&&this.pickaxes.externalModal!==this.pickaxes.backpack)||this.player.motor.externalMotion||this.pickaxes.modal||(this.pickaxes.externalModal&&this.pickaxes.externalModal!==this.pickaxes.backpack)));
     const signature=this.progress.data.owned.join(',');
     if(this.ownedSignature!==signature){this.ownedSignature=signature;this.choice.innerHTML=this.assets.catalog.filter(t=>this.progress.data.owned.includes(t.tier)).map(t=>`<option value="${t.tier}">${t.name}</option>`).join('');}
-    this.choice.value=String(item.tier);this.choice.hidden=this.progress.data.owned.length<2;this.choice.disabled=this.slot.disabled;
-    this.pickaxes.el['auto-pickaxe'].hidden=!!this.player.equippedPet||!!this.equipped||!this.pickaxes.progress.data.equipped||!!this.player.training;
+    setProp(this.choice,'value',String(item.tier));setProp(this.choice,'hidden',this.progress.data.owned.length<2);setProp(this.choice,'disabled',this.slot.disabled);
+    setProp(this.pickaxes.el['auto-pickaxe'],'hidden',!!this.player.equippedPet||!!this.equipped||!this.pickaxes.progress.data.equipped||!!this.player.training);
   }
   toggle(){if(this.pickaxes.backpack)++this.pickaxes.backpack.version;if(this.pickaxes.backpack?.opened)this.pickaxes.backpack.close();if(this.player.equippedPet){this.pickaxes.backpack.unequip();if(this.equipped)return true;}if(this.blocked||this.busy||this.pickaxes.busy)return false;if(this.equipped){this.unequip();return true;}return this.equip(this.progress.data.selected);}
   unequip(save=true){this.swingPose?.restore();this.progress.data.equipped=null;this.swingUntil=0;this.mount.visible=false;if(save)this.account.save();this.refresh();}
@@ -86,6 +88,6 @@ export class WeaponSystem {
       this.pickaxes.grip.getWorldPosition(this.mount.position);this.mount.quaternion.copy(orientation);
       this.mount.updateWorldMatrix(true,true);this.loaded.effect.update(dt,this.camera);
     }
-    this.refresh();Object.assign(this.canvas.dataset,{weaponTier:String(this.equipped||0),weaponVisible:String(active),weaponBusy:String(this.busy),weaponSwings:String(this.swingCount),weaponAnimation:'Bat Swing candidate',weaponAnimationTime:String(this.swingUntil>this.time?this.time-this.swingStarted:0)});
+    this.refresh();assignDataset(this.canvas,{weaponTier:String(this.equipped||0),weaponVisible:String(active),weaponBusy:String(this.busy),weaponSwings:String(this.swingCount),weaponAnimation:'Bat Swing candidate',weaponAnimationTime:String(this.swingUntil>this.time?this.time-this.swingStarted:0)});
   }
 }

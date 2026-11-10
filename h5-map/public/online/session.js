@@ -2,6 +2,7 @@ import {OP,encodeMove,decodeMoves,encodeMotion,decodeMotions,decodeGuardStates,C
 import {MotionSender} from './motion.js';
 import {NativeRoomChat} from './native-room-chat.js';
 const terminal=new Set(['cancelled','timeout','confirm_timeout','failed']);
+const MAX_INTENT_ATTEMPTS=32;
 // 单个生命周期对象贯穿加载、后台、重连和退出，不创建第二个未结算Ticket。
 export class PastureSession {
   constructor({socket,onStatus=()=>{},onMessage=()=>{},now=()=>performance.now()}){
@@ -99,12 +100,16 @@ export class PastureSession {
     if(this.stage==='operation_pending')this.status('room_connected');
     this.retryIntent();return true;
   }
+  // A missing receipt must not stop movement or freeze the world. Resending is idempotent
+  // (Room replays the stored receipt by id), so keep retrying at a capped interval; after
+  // ~2 minutes give up the slot and re-baseline, since the outcome is then unknown.
   retryIntent(){
     const p=this.pending;if(!p||!this.ready||!this.room||this.now()<p.nextAt)return;
-    if(p.attempts>=3){this.status('operation_pending','RECEIPT_TIMEOUT');return;}
+    if(p.attempts>=MAX_INTENT_ATTEMPTS){this.pending=null;this.lastCode='RECEIPT_TIMEOUT';this.status('syncing','RECEIPT_TIMEOUT');this.requestSnapshot();return;}
+    if(p.attempts>=3)this.lastCode='RECEIPT_TIMEOUT';
     // Transactions use control-reliable so they never queue behind baseline bulk on game-reliable.
     try{this.room.sendControl(OP.INTENT,new TextEncoder().encode(JSON.stringify({id:p.id,action:p.action,value:p.value})));}catch(e){this.sender.failed(this.now(),e.code);}
-    p.attempts++;p.nextAt=this.now()+1000*2**(p.attempts-1);
+    p.attempts++;p.nextAt=this.now()+Math.min(4000,1000*2**(p.attempts-1));
   }
   update(position){
     if(!this.ready||!this.active||this.exiting||this.stage!=='room_connected')return;

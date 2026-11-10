@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "h5-map",
-      "runtimeExecutable": "python",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["h5-map/serve.py"],
       "port": 8765
     }

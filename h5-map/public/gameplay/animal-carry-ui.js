@@ -1,13 +1,13 @@
 import {animalIncome} from './animal-attributes.js';
 import * as THREE from 'three';
-import {gradientStops} from './egg-billboards.js';
+import {gradientStops,setStops} from './egg-billboards.js';
 import {speciesOf} from './pickaxe-state.js';
 import {formatNumber} from '../treadmill-state.js';
 
 const NS='http://www.w3.org/2000/svg';
 export class AnimalCarryUI {
   constructor(camera){
-    this.camera=camera;this.sequence=0;this.point=new THREE.Vector3();
+    this.camera=camera;this.sequence=0;this.point=new THREE.Vector3();this.anchor=new THREE.Vector3();this.projected=new THREE.Vector3();
     const link=document.createElement('link');link.rel='stylesheet';link.href=new URL('./animal-carry.css',import.meta.url).href;document.head.append(link);
     this.root=document.createElement('div');this.root.id='animal-carry-ui';
     this.root.innerHTML='<div id="animal-overheads" aria-hidden="true"></div><button id="animal-pickup" hidden aria-label="按住拾取动物"><span class="pickup-key"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="24"/></svg><kbd>E</kbd></span><span><b>Pick Up</b><small></small></span></button><button id="animal-drop" hidden><kbd>G</kbd> Drop</button>';
@@ -25,19 +25,22 @@ export class AnimalCarryUI {
   }
   project(position){
     const view=this.point.copy(position).applyMatrix4(this.camera.matrixWorldInverse),z=-view.z;
-    const p=position.clone().project(this.camera);
+    const p=this.projected.copy(position).project(this.camera);
     return {x:(p.x*.5+.5)*innerWidth,y:(-.5*p.y+.5)*innerHeight,z,visible:z>0&&p.z>=-1&&p.z<=1&&Math.abs(p.x)<1.2&&Math.abs(p.y)<1.3};
   }
   label(a,v,time){
-    const ref=v.label,anchor=v.root.position.clone().add(new THREE.Vector3(0,v.height+.25,0)),p=this.project(anchor);
+    const ref=v.label,anchor=this.anchor.copy(v.root.position),p=(anchor.y+=v.height+.25,this.project(anchor));
     const visible=(a.status==='ground'||a.status==='carrying')&&p.visible&&anchor.distanceTo(this.camera.position)<=150;
-    ref.svg.toggleAttribute('hidden',!visible);if(!visible)return;
+    if(ref.svg.hidden!==!visible)ref.svg.toggleAttribute('hidden',!visible);if(!visible)return;
     const scale=Math.min(2.2,Math.max(.85,a.scale)),k=innerHeight/(2*Math.tan(this.camera.fov*Math.PI/360)*p.z)*7.5*scale/500;
-    ref.svg.style.transform=`translate(${p.x-280*k}px,${p.y-500*k}px) scale(${k})`;
+    // Write only changed values; every SVG style write restyles and re-rasterizes the label.
+    const w=ref.written||(ref.written={});
+    const transform=`translate(${(p.x-280*k).toFixed(1)}px,${(p.y-500*k).toFixed(1)}px) scale(${k.toFixed(4)})`;
+    if(w.transform!==transform){w.transform=transform;ref.svg.style.transform=transform;}
     const seconds=Math.ceil(a.remaining);if(ref.timer.textContent!==`${seconds}s`)ref.timer.textContent=`${seconds}s`;
-    ref.timer.style.fill=a.remaining<=10?'#ff5050':'';
-    ref.timerRow.style.display=a.status==='carrying'||a.lookRemaining>0?'none':'';
-    if(time-(ref.lastGradient??-Infinity)>.05){ref.lastGradient=time;ref.gradient.innerHTML=gradientStops(ref.rarity,time).map(s=>`<stop offset="${s.t}" stop-color="rgb(${s.c.map(n=>Math.round(n*255)).join(',')})"/>`).join('');}
+    const fill=a.remaining<=10?'#ff5050':'';if(w.fill!==fill){w.fill=fill;ref.timer.style.fill=fill;}
+    const row=a.status==='carrying'||a.lookRemaining>0?'none':'';if(w.row!==row){w.row=row;ref.timerRow.style.display=row;}
+    if(time-(ref.lastGradient??-Infinity)>.05){ref.lastGradient=time;setStops(ref.gradient,gradientStops(ref.rarity,time));}
   }
   interaction(target,view,hold,carrying,blocked){
     this.drop.hidden=!carrying||blocked;

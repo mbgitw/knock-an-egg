@@ -1,3 +1,4 @@
+import {assignDataset} from './dom-diff.js';
 import {MobileGestures} from './mobile-gestures.js';
 import {CameraOcclusion} from './camera-occlusion.js';
 import * as THREE from 'three';
@@ -229,6 +230,6 @@ export class PlayerController {
     this.shadow.visible=!!floor&&floor.distance<15;
     if(this.shadow.visible){this.shadow.position.copy(floor.position);this.shadow.position.y+=.025;this.shadow.material.opacity=Math.max(.12,1-floor.distance/15);}
     // Diagnostics are DOM data attributes only; no gameplay hints are rendered.
-    Object.assign(this.canvas.dataset,{playerX:this.motor.position.x.toFixed(3),playerY:this.motor.position.y.toFixed(3),playerZ:this.motor.position.z.toFixed(3),grounded:String(this.motor.grounded),animation:this.animation,cameraDistance:distance.toFixed(3)});
+    assignDataset(this.canvas,{playerX:this.motor.position.x.toFixed(3),playerY:this.motor.position.y.toFixed(3),playerZ:this.motor.position.z.toFixed(3),grounded:String(this.motor.grounded),animation:this.animation,cameraDistance:distance.toFixed(3)});
   }
 }

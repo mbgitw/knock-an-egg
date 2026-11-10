@@ -1,4 +1,4 @@
-import {createPetModel,updatePetAnimation,disposePetModel} from './pet-animation.js';
+import {createPetModel,updatePetAnimation,disposePetModel} from './pet-culling.js';
 import {animalVisualScale} from './animal-attributes.js';
 import {animalIncome} from './animal-attributes.js';
 import {mergeEggImage} from './merge-ui.js';

@@ -1,3 +1,4 @@
+import {assignDataset} from '../dom-diff.js';
 import * as THREE from 'three';
 import {batchStaticBlocks} from '../static-blocks.js';
 import {TreadmillSign} from '../treadmill-sign.js';
@@ -137,7 +138,7 @@ export class PlotSystem {
   update(dt){
     this.cooldown=Math.max(0,this.cooldown-dt);const p=this.progress,cost=p.cost;
     this.sign?.update({title:'升级基地围栏',levelText:cost===null?`等级 ${p.level} · MAX`:`等级 ${p.level} → ${p.level+1}`,detailText:cost===null?`动物容量 ${p.capacity}`:`动物容量 ${p.capacity} → ${p.capacity+1}`,priceText:this.busy?'加载中…':cost===null?'MAX':`$${formatNumber(cost)}`,hasNextLevel:cost!==null,affordable:!this.busy&&!this.account.session&&p.affordable});
-    Object.assign(this.canvas.dataset,{plotLevel:String(p.level),plotCapacity:String(p.capacity),plotLevels:JSON.stringify(Object.fromEntries(this.data.bases.map(b=>[b.id,b.id===this.data.baseId?p.level:1])))});
+    assignDataset(this.canvas,{plotLevel:String(p.level),plotCapacity:String(p.capacity),plotLevels:JSON.stringify(Object.fromEntries(this.data.bases.map(b=>[b.id,b.id===this.data.baseId?p.level:1])))});
   }
   dispose(){this.sign.dispose();disposeModel(this.root);for(const root of this.otherRoots)disposeModel(root);for(const m of this.materials)m.dispose();for(const t of this.textures.values())t.dispose();}
 }

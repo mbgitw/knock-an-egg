@@ -18,7 +18,7 @@ import {insideZone} from './rules/gameplay/zone-entry-state.ts';
 import {guardFling} from './rules/gameplay/guard-brain.ts';
 import guardCatalog from './data/guards.ts';
 
-const SAVE='pasture_account_v1';
+const SAVE='pasture_account_v1',LOAD_ATTEMPTS=6;
 const DERIVED=Symbol('pasture-room-derived');
 // 所有持续状态进入state；不广播其中的私人账户和幂等回执。
 export class PastureRoom extends Room<any>{
@@ -98,9 +98,19 @@ export class PastureRoom extends Room<any>{
   onJoin(client:Client){
     const p=join(this.state,client.userId,client.seatId);
     if(p.loaded){this.snapshot(p);return;}
+    (p as any).loadAttempts=0;this.loadAccount(p);
+  }
+  // A transient cloud read failure is retried with backoff from the gameplay tick; only a corrupt
+  // save or exhausted retries reach the client as SAVE_LOAD_FAILED, which it treats as final.
+  loadAccount(p:Player){
+    const state=p as any;state.loading=true;state.loadRetryAt=null;
     this.cloudLoadSnapshot(p.id,result=>{
-      if(this.state.players[p.id]!==p)return;
-      if(result.status!=='ready'){this.receipt(p,{ok:false,reason:'SAVE_LOAD_FAILED'});return;}
+      if(this.state.players[p.id]!==p||p.loaded)return;state.loading=false;
+      if(result.status!=='ready'){
+        state.loadAttempts=(state.loadAttempts||0)+1;
+        if(state.loadAttempts<LOAD_ATTEMPTS){state.loadRetryAt=this.state.elapsed+Math.min(8000,500*2**state.loadAttempts);this.log('warn',`save_load_retry ${JSON.stringify({player:p.id,attempt:state.loadAttempts,status:result.status})}`);return;}
+        this.receipt(p,{ok:false,reason:'SAVE_LOAD_FAILED',final:true});return;
+      }
       try{
         const value=result.entries.find(e=>e.key===SAVE&&e.live)?.value;
         if(value&&value.kind!=='string')throw Error('SAVE_SCHEMA');
@@ -109,12 +119,12 @@ export class PastureRoom extends Room<any>{
         p.revision=Number.isSafeInteger(saved?.revision)?saved.revision:0;p.receipts=saved?.receipts||{};p.loaded=true;resumeEconomy(p,Number(this.unixTimeMillis()));this.snapshot(p);this.profiles();this.pasture(p);
         // Persist legacy preparation migration even if the player makes no move.
         if(Object.keys(saved?.account?.commerce?.intents||{}).length){p.dirty=true;this.save(p);}
-      }catch{this.receipt(p,{ok:false,reason:'SAVE_LOAD_FAILED'});}
+      }catch{this.receipt(p,{ok:false,reason:'SAVE_LOAD_FAILED',final:true});}
     });
   }
   onDisconnect(client:Client){const p=this.player(client);if(p){dropAnimal(this.state,p,true);disconnect(p);this.save(p);this.profiles();this.animals();}}
   onReconnect(client:Client){const p=this.player(client);if(p){p.connected=true;p.active=false;this.snapshot(p);this.profiles();}}
-  onLeave(client:Client){const p=this.player(client);if(!p)return;dropAnimal(this.state,p,true);this.save(p);leave(this.state,p.id);delete this.state.animalCache[p.id];this.profiles();this.animals();}
+  onLeave(client:Client){const p=this.player(client);if(!p)return;dropAnimal(this.state,p,true);this.save(p);leave(this.state,p.id);delete this.state.animalCache[p.id];this.derived.pastures?.delete(p.id);this.profiles();this.animals();}
   onTick(deltaMs:number){
     this.state.elapsed+=Math.max(0,deltaMs);
     const state=this.state as any;state.gameplayPending=(state.gameplayPending??0)+Math.max(0,deltaMs);
@@ -129,17 +139,18 @@ export class PastureRoom extends Room<any>{
   }
   updateGameplay(deltaMs:number){
     for(const id of Object.keys(this.state.pendingSaves))this.flushSave(id);
+    for(const p of Object.values(this.state.players)){const s=p as any;if(!p.loaded&&p.connected&&!s.loading&&s.loadRetryAt!=null&&s.loadRetryAt<=this.state.elapsed)this.loadAccount(p);}
     const players=Object.values(this.state.players).filter(p=>p.connected&&p.loaded);
     // 空房由平台宽限回收；不运行世界扫描或AI。
     if(!players.length)return;
     this.logNetwork(players);
     const now=Number(this.unixTimeMillis()),second=Math.floor(this.state.elapsed/1000)!==Math.floor((this.state.elapsed-deltaMs)/1000);
-    for(const p of players){if(paymentPending(p))continue;const trainingBefore=JSON.stringify(p.training),count=p.account.growingEggs.length,credited=redeemPaidCredits(p.account,now);if(credited)p.dirty=true;tickEconomy(this.state,p,deltaMs/1000,now);if(trainingBefore!==JSON.stringify(p.training)){this.account(p);this.profiles();}if(credited||count!==p.account.growingEggs.length){this.account(p);this.save(p);this.pasture(p);}else if(second){this.account(p,true);if(Math.floor(this.state.elapsed/1000)%10===0)this.save(p);}}
+    for(const p of players){if(paymentPending(p))continue;const trainingBefore=JSON.stringify(p.training),count=p.account.growingEggs.length,credited=redeemPaidCredits(p.account,now);if(credited)p.dirty=true;tickEconomy(this.state,p,deltaMs/1000,now);if(trainingBefore!==JSON.stringify(p.training)){this.account(p);this.profiles();}if(credited||count!==p.account.growingEggs.length){this.account(p);this.save(p);this.pasture(p);}else if(second){this.account(p,true);if(Math.floor(this.state.elapsed/1000)%10===p.slot%10)this.save(p);}}
     const cache=this.derived;
     const guards=cache.guards&&cache.guardSource===this.state.guards?cache.guards:createGuards(()=>this.random(),(guard,target)=>this.onGuardCatch(guard,target),this.state.guards);
     cache.guards=guards;
     updateGuards(guards,players.map(p=>({id:p.id,position:p.position,power:p.account.power,carrying:p.carrying?this.state.animals[p.carrying]?.pet:null,safe:guardCatalog.safeParts.some(part=>insideZone(part,p.position))||insideZone(plotBox(p),p.position),disabled:!p.active||(p as any).immuneUntil>this.state.elapsed})),deltaMs/1000);
-    this.state.guards=saveGuards(guards);
+    // Live guards stay in the derived cache; onCheckpoint serializes them for migration.
     cache.guardSource=this.state.guards;
     this.sendGuards(players,guards);
     const holds=players.map(p=>({p,id:p.hold?.id,carrying:p.carrying}));
@@ -159,10 +170,11 @@ export class PastureRoom extends Room<any>{
     (p as any).stunnedUntil=this.state.elapsed+fling.duration*1000;(p as any).externalSpeed=fling.horizontal;(p as any).immuneUntil=(p as any).stunnedUntil+1000;
     this.profiles();this.account(p);this.sendToUserJson(p.id,String(OP.EVENT),{kind:'launch',fling,velocity:{x:Math.cos(fling.wobble)*fling.horizontal,y:fling.vertical,z:Math.sin(fling.wobble)*fling.horizontal}});this.animals();
   }
-  onActivated(){this.clearDerivedState();this.state.animalCache={};this.state.saving={};for(const p of Object.values(this.state.players))(p as any).paymentBusy=false;}
+  onActivated(){this.clearDerivedState();this.state.animalCache={};this.state.saving={};for(const p of Object.values(this.state.players)){(p as any).paymentBusy=false;if(!p.loaded&&(p as any).loading){(p as any).loading=false;(p as any).loadRetryAt=this.state.elapsed;}}}
   // eggEngine only restores methods/Map indexing over state.eggs. Caches carry no gameplay state.
-  onCheckpoint():RoomSnapshot{return {schemaVersion:1,data:encodeJson(this.state)};}
-  onRestore(context:RoomContext,snapshot:RoomSnapshot,reason:ActivationReason){super.onRestore(context,snapshot,reason);this.clearDerivedState();this.state.animalCache={};this.state.saving={};for(const p of Object.values(this.state.players))(p as any).paymentBusy=false;}
+  onCheckpoint():RoomSnapshot{this.syncGuards();return {schemaVersion:1,data:encodeJson(this.state)};}
+  syncGuards(){const cache=(this.state as any)[DERIVED];if(cache?.guards){this.state.guards=saveGuards(cache.guards);cache.guardSource=this.state.guards;}}
+  onRestore(context:RoomContext,snapshot:RoomSnapshot,reason:ActivationReason){super.onRestore(context,snapshot,reason);this.clearDerivedState();this.state.animalCache={};this.state.saving={};for(const p of Object.values(this.state.players)){(p as any).paymentBusy=false;if(!p.loaded&&(p as any).loading){(p as any).loading=false;(p as any).loadRetryAt=this.state.elapsed;}}}
   snapshot(p:Player){if(!p.loaded)return;renewMotion(p);(p as any).caps=0;(p as any).motionV2=false;(p as any).motionAwaiting=false;(p as any).accountSent=null;this.sendToUserJson(p.id,String(OP.SNAPSHOT),{revision:this.state.revision,time:this.state.elapsed,self:p.id,interactions:1,motion:{version:2,hz:20,epoch:(p as any).motionEpoch},players:Object.values(this.state.players).filter(p=>p.loaded).map(publicPlayer)});this.account(p);this.animalSnapshot(p);this.eggSnapshot(p);for(const owner of Object.values(this.state.players))if(owner.loaded)this.pasture(owner,p.id);}
   animalSnapshot(p:Player,full=true){
     const visible=visibleAnimals(this.state,p),previous=full?new Map<string,string>():new Map<string,string>(Object.entries(this.state.animalCache[p.id]||{})),next=new Map<string,string>();
@@ -254,7 +266,10 @@ export class PastureRoom extends Room<any>{
     this.sendToUserJson(p.id,String(OP.EVENT),{kind:'hold-progress',sequence:state.holdSequence,id:p.hold?.id??null,active:!!p.hold,elapsed:p.hold?Math.max(0,this.state.elapsed-p.hold.startedAt):0,carrying:p.carrying});
   }
 
-  pasture(owner:Player,target?:string){const data={id:owner.id,slot:owner.slot,level:owner.account.plot.level,pets:owner.account.plot.pets,growing:owner.account.growingEggs};for(const p of Object.values(this.state.players))if(p.loaded&&p.connected&&(!target||p.id===target))this.sendObject(p.id,OP.PASTURE,data);}
+  // Targeted sends (baselines) always go out; broadcasts skip a pasture identical to the last one sent.
+  pasture(owner:Player,target?:string){const data={id:owner.id,slot:owner.slot,level:owner.account.plot.level,pets:owner.account.plot.pets,growing:owner.account.growingEggs};
+    if(!target){const text=JSON.stringify(data),sent=this.derived.pastures??=new Map();if(sent.get(owner.id)===text)return;sent.set(owner.id,text);}
+    for(const p of Object.values(this.state.players))if(p.loaded&&p.connected&&(!target||p.id===target))this.sendObject(p.id,OP.PASTURE,data);}
   sendObject(id:string,op:number,data:any,channel:'game-reliable'|'control-reliable'='game-reliable'){
     const send=(payload:any)=>channel==='game-reliable'?this.sendToUserJson(id,String(op),payload):this.sendToUserJsonOn(channel,id,String(op),payload);
     const text=JSON.stringify(data);if(new TextEncoder().encode(text).length<20000){send(data);return;}
@@ -271,7 +286,9 @@ export class PastureRoom extends Room<any>{
     this.sendObject(p.id,OP.ACCOUNT,{...data,seq,revision:p.revision,training:p.training,now:Number(this.unixTimeMillis())},this.privateChannel(p));
     if(!delta)(p as any).accountSent=JSON.parse(JSON.stringify(p.account));
   }
-  profiles(){this.broadcastJson(String(OP.EVENT),{kind:'players',revision:this.state.revision,players:Object.values(this.state.players).filter(p=>p.loaded).map(publicPlayer)});}
+  // Most intents leave public profiles unchanged; only broadcast when the list actually differs.
+  // Position is excluded from the key: clients only use it to seed a newly created avatar, and motion frames carry it.
+  profiles(){const players=Object.values(this.state.players).filter(p=>p.loaded).map(publicPlayer),key=JSON.stringify(players,(k,v)=>k==='position'?undefined:v),cache=this.derived;if(cache.profilesKey===key)return;cache.profilesKey=key;this.broadcastJson(String(OP.EVENT),{kind:'players',revision:this.state.revision,players});}
   save(p:Player){
     if(!p.loaded||!p.dirty)return;
     if((p as any).paymentBusy||p.account.commerce.delivery)return;

@@ -1,5 +1,19 @@
 # 联机渲染性能与手机验收
 
+## 2026-11-09 RENDER-PERF-01 客户端渲染与主线程减负（本地）
+
+健康检查后按影响顺序修改客户端，未改 Room、协议、玩法规则或视觉资产，未上传、未部署。
+
+- 后处理目标由 RGBA16F 改为 sRGB8（UnsignedByte + SRGBColorSpace），MSAA 采样数按 SRGB8_ALPHA8 查询；调色本就截断到 0..1。画布 `antialias:false`，场景 MSAA 仍在调色目标中。显存/带宽约减半；同机位逐格像素均值前后一致（静态区域差 ±1–2）。
+- 蛋/动物 SVG 标签只写变化的值（transform 取 0.1px/4 位小数、zIndex、显隐、y、HP 变换），动画渐变复用 `<stop>` 节点而不重建 innerHTML。跑步机 HUD、武器槽和画布 dataset 通过 `public/dom-diff.js` 跳过未变化写入；蛋粒子 QA 统计降为 4 Hz。牧场/玩家名牌每帧只读一次画布 rect，遮挡射线每个名牌 5 Hz。
+- `weapon-effects.js` / `pickaxe-effects.js` 发射器每帧零分配；死亡粒子只写一次零缩放矩阵，全空闲时跳过 GPU 上传。
+- 守卫（10 个、83 个蒙皮网格）和宠物恢复视锥剔除：绑定姿态计算一次局部包围球并放大（宠物 1.6 倍、守卫 2 倍）。不可见或视锥外的 mixer 累计时间，可见时补齐。宠物逻辑在 `gameplay/pet-culling.js`；`pet-animation.js` 与 `animal-glb-runtime.js` 是动物 GLB 构建输入（`tools/animal-build-inputs.json` 校验哈希），保持原字节。
+- 镐商店缩略图改为 `toBlob` 异步编码并逐帧生成一个。
+
+桌面 Chrome（M 系列 Mac、1843×1382、DPR 上限 1.8）出生点：CPU 提交 4.48→约 3.0–3.2 ms，GPU 6.19→6.35 ms（Apple GPU 片上 MSAA，带宽收益不体现在该机型）。DPR 1.0 对比 1.8 的 GPU 为 3.53/6.26 ms，片元填充率是主要 GPU 成本。手机帧率未实测。
+
+遗留：新 WebGLRenderer 首帧着色器编译约 95 ms（桌面），首次打开镐商店仍会卡一下，宜改为构建期离线缩略图；手机动态分辨率需产品确认画质取舍。浏览器面板隐藏时 rAF 被节流到约 1 Hz，此时采样不可用。
+
 ## 2026-10-29 DRAW-CALLS-01 基地平面贴面与蛋巢实例合批（本地）
 
 用户反馈 Draw calls 偏高，本轮完成两项有边界的优化。plot-system 的 Authored top Texture 是 41 个两三角面的平面，验证平面误差为 0；保持 DoubleSide/透明度/深度设置，仅 forceSinglePass=true，避免正反两次提交。static-blocks 的合批键加入 forceSinglePass，防止混合策略。静态一级基地从 62 次理论提交降至 35 次，九级从 86 至 51（非整场实测）。

@@ -1,4 +1,4 @@
-import {updatePetAnimation,disposePetModel} from './pet-animation.js';
+import {updatePetAnimation,disposePetModel} from './pet-culling.js';
 import * as THREE from 'three';
 import {AnimalCarryState} from './animal-carry-state.js';
 import {AnimalCarryUI} from './animal-carry-ui.js';

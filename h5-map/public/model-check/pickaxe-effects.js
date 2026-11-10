@@ -25,9 +25,11 @@ function colorCurve(value) {
   }
   return channels;
 }
-function colorAt(channels, progress) {
-  return new THREE.Color().setRGB(...channels.map(points => sample(points, progress)), THREE.SRGBColorSpace);
+function colorAt(channels, progress, target = new THREE.Color()) {
+  return target.setRGB(sample(channels[0], progress), sample(channels[1], progress), sample(channels[2], progress), THREE.SRGBColorSpace);
 }
+// Emitters update every frame; shared scratch objects keep that loop allocation-free.
+const scratch = {transform: new THREE.Matrix4(), hidden: new THREE.Matrix4().makeScale(0, 0, 0), quaternion: new THREE.Quaternion(), spin: new THREE.Quaternion(), scale: new THREE.Vector3(), color: new THREE.Color(), z: new THREE.Vector3(0, 0, 1)};
 function gridFor(p) {
   const layout = number(p.FlipbookLayout);
   return layout === 4 ? [number(p.FlipbookSizeX, 1), number(p.FlipbookSizeY, 1)]
@@ -145,6 +147,8 @@ class Emitter {
     this.colors = colorCurve(this.p.Color);
     this.acceleration = vector(this.p.Acceleration);
     this.grid = gridFor(this.p);
+    this.orientation = number(this.p.Orientation); this.drag = number(this.p.Drag);
+    this.frameTotal = this.grid[0] * this.grid[1]; this.flipbookProgress = this.p.FlipbookMode === '1'; this.blendFrames = this.p.FlipbookBlendFrames === 'true';
     this.particles = Array.from({length: this.capacity}, () => ({age: Infinity}));
     this.tint = new THREE.InstancedBufferAttribute(new Float32Array(this.capacity * 4), 4);
     this.frames = new THREE.InstancedBufferAttribute(new Float32Array(this.capacity), 1);
@@ -175,7 +179,7 @@ class Emitter {
   }
   spawn() {
     const p = this.p, particle = this.particles[this.next++ % this.capacity];
-    particle.age = 0; particle.life = randomRange(p.Lifetime);
+    particle.age = 0; particle.life = randomRange(p.Lifetime); particle.cleared = false;
     particle.position = this.center.clone();
     const size = this.node.sourceSize || [0, 0, 0];
     particle.position.add(new THREE.Vector3(...size.map(n => (Math.random() - .5) * n)).applyQuaternion(this.rotation));
@@ -198,39 +202,43 @@ class Emitter {
   integrate(particle, dt) {
     particle.age += dt;
     particle.position.addScaledVector(particle.velocity, dt).addScaledVector(this.acceleration, .5 * dt * dt);
-    particle.velocity.addScaledVector(this.acceleration, dt).multiplyScalar(Math.exp(-number(this.p.Drag) * dt));
+    particle.velocity.addScaledVector(this.acceleration, dt).multiplyScalar(Math.exp(-this.drag * dt));
   }
   update(dt, cameraQuaternion, cameraRight, cameraUp) {
     this.accumulator += dt * this.rate;
     while (this.accumulator >= 1) { this.spawn(); this.accumulator--; }
-    const transform = new THREE.Matrix4(), quaternion = new THREE.Quaternion();
-    const scale = new THREE.Vector3(), z = new THREE.Vector3(0, 0, 1);
-    this.particles.forEach((particle, i) => {
+    const {transform, hidden, quaternion, spin, scale, color, z} = scratch, particles = this.particles;
+    let changed = false;
+    for (let i = 0; i < particles.length; i++) {
+      const particle = particles[i];
       if (!particle.position || particle.age >= particle.life) {
-        transform.makeScale(0, 0, 0); this.mesh.setMatrixAt(i, transform); return;
+        // A dead slot only needs one zero-scale write, not one per frame.
+        if (!particle.cleared) { particle.cleared = true; this.mesh.setMatrixAt(i, hidden); changed = true; }
+        continue;
       }
+      changed = true;
       this.integrate(particle, dt);
       const progress = THREE.MathUtils.clamp(particle.age / particle.life, 0, 1);
       let angle = particle.rotation + particle.rotSpeed * particle.age;
-      if (number(this.p.Orientation) === 3) quaternion.setFromUnitVectors(z, particle.normal);
+      if (this.orientation === 3) quaternion.setFromUnitVectors(z, particle.normal);
       else {
         quaternion.copy(cameraQuaternion);
-        if (number(this.p.Orientation) === 2) angle += Math.atan2(-particle.velocity.dot(cameraRight), particle.velocity.dot(cameraUp));
+        if (this.orientation === 2) angle += Math.atan2(-particle.velocity.dot(cameraRight), particle.velocity.dot(cameraUp));
       }
-      quaternion.multiply(new THREE.Quaternion().setFromAxisAngle(z, angle));
+      quaternion.multiply(spin.setFromAxisAngle(z, angle));
       const size = Math.max(0, sample(this.sizeCurve, progress, particle.envelope));
       scale.set(size, size, size);
       transform.compose(particle.position, quaternion, scale);
       this.mesh.setMatrixAt(i, transform);
-      const color = colorAt(this.colors, progress);
+      colorAt(this.colors, progress, color);
       this.tint.setXYZW(i, color.r, color.g, color.b, 1 - THREE.MathUtils.clamp(sample(this.alphaCurve, progress), 0, 1));
-      const total = this.grid[0] * this.grid[1];
-      let frame = this.p.FlipbookMode === '1' ? progress * (total - 1) : (particle.age * particle.fps + particle.frameStart) % total;
-      if (this.p.FlipbookBlendFrames !== 'true') frame = Math.floor(frame);
+      const total = this.frameTotal;
+      let frame = this.flipbookProgress ? progress * (total - 1) : (particle.age * particle.fps + particle.frameStart) % total;
+      if (!this.blendFrames) frame = Math.floor(frame);
       this.frames.setX(i, frame);
-    });
-    this.mesh.instanceMatrix.needsUpdate = true;
-    this.tint.needsUpdate = this.frames.needsUpdate = true;
+    }
+    // Idle emitters (all slots already cleared) skip the GPU buffer upload entirely.
+    if (changed) { this.mesh.instanceMatrix.needsUpdate = true; this.tint.needsUpdate = this.frames.needsUpdate = true; }
   }
 }
 

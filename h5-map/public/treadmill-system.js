@@ -2,6 +2,7 @@ import {gameAudio} from './gameplay/game-audio.js';
 import * as THREE from 'three';
 import {TreadmillAssets} from './treadmill-assets.js';
 import {TreadmillSign} from './treadmill-sign.js';
+import {assignDataset, setAttr, setProp, setText} from './dom-diff.js';
 import {TreadmillState, LEVELS, UNLOCK_COST, animationRate, formatNumber, gainColor} from './treadmill-state.js';
 
 // Single-player authority. Future income systems use account.creditCash(), and
@@ -66,17 +67,18 @@ export class TreadmillSystem {
   }
   refreshHUD() {
     const e = this.elements, a = this.account, d = a.data;
-    e['speed-value'].textContent = formatNumber(d.power);
-    e['cash-value'].textContent = `$${formatNumber(d.cash)}`;
-    e['slow-mode'].setAttribute('aria-pressed', String(d.slow));
-    e['slow-mode'].hidden = !!a.session;
-    e['machine-name'].textContent = a.level.name;
-    e['machine-level'].textContent = !d.unlocked ? '未解锁' : a.level.cost === null ? `Lv.${d.level} · MAX` : `Lv.${d.level} → Lv.${d.level + 1}`;
-    e['machine-mult'].textContent = `成长 ×${a.level.multiplier}${d.unlocked && a.level.cost !== null ? ` → ×${LEVELS[d.level].multiplier}` : ''}`;
+    // Runs every frame; the helpers skip DOM writes when nothing changed.
+    setText(e['speed-value'], formatNumber(d.power));
+    setText(e['cash-value'], `$${formatNumber(d.cash)}`);
+    setAttr(e['slow-mode'], 'aria-pressed', d.slow);
+    setProp(e['slow-mode'], 'hidden', !!a.session);
+    setText(e['machine-name'], a.level.name);
+    setText(e['machine-level'], !d.unlocked ? '未解锁' : a.level.cost === null ? `Lv.${d.level} · MAX` : `Lv.${d.level} → Lv.${d.level + 1}`);
+    setText(e['machine-mult'], `成长 ×${a.level.multiplier}${d.unlocked && a.level.cost !== null ? ` → ×${LEVELS[d.level].multiplier}` : ''}`);
     const price = d.unlocked ? a.level.cost : UNLOCK_COST;
-    e['machine-purchase'].textContent = this.busy ? '加载中…' : price === null ? '已满级' : `${d.unlocked ? '升级' : '解锁'} · $${formatNumber(price)}`;
-    e['machine-purchase'].disabled = this.busy || !!a.session || price === null || d.cash < price;
-    e['machine-purchase'].title = this.purchaseError || (price !== null && d.cash < price ? `还需 $${formatNumber(price - d.cash)}` : '');
+    setText(e['machine-purchase'], this.busy ? '加载中…' : price === null ? '已满级' : `${d.unlocked ? '升级' : '解锁'} · $${formatNumber(price)}`);
+    setProp(e['machine-purchase'], 'disabled', this.busy || !!a.session || price === null || d.cash < price);
+    setProp(e['machine-purchase'], 'title', this.purchaseError || (price !== null && d.cash < price ? `还需 $${formatNumber(price - d.cash)}` : ''));
     this.sign?.update({
       title: d.unlocked ? '升级跑步机' : '购买跑步机',
       levelText: price === null ? `等级 ${d.level} · MAX` : `等级 ${d.unlocked ? d.level : 0} → ${d.unlocked ? d.level + 1 : 1}`,
@@ -84,10 +86,7 @@ export class TreadmillSystem {
       hasNextLevel: price !== null,
       affordable: !this.busy && !a.session && price !== null && d.cash >= price,
     });
-    this.canvas.dataset.storageStatus = a.storageStatus;
-    this.canvas.dataset.treadmillLevel = d.level;
-    this.canvas.dataset.speedPower = d.power;
-    this.canvas.dataset.training = a.session?.kind || 'none';
+    assignDataset(this.canvas, { storageStatus: a.storageStatus, treadmillLevel: d.level, speedPower: d.power, training: a.session?.kind || 'none' });
   }
   boardReachable() {
     if (this.player.motor.position.distanceTo(this.boardPosition) > 19) return false;

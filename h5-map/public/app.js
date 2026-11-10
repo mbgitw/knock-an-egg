@@ -12,6 +12,7 @@ import {plotSpawn} from './online/plot-spawn.js';
 import {CloudSave} from './gameplay/commerce/cloud-save.js';
 import {freezeStaticMatrices} from './static-blocks.js';
 import {FrameMetrics} from './frame-metrics.js';
+import {setPetAnimationView} from './gameplay/pet-culling.js';
 import {createMissingPlotBoards} from './gameplay/plot-board-models.js';
 import {GameConnection} from './online/game-connection.js';
 import {installOnline} from './online/runtime.js';
@@ -56,7 +57,8 @@ async function loadingStage(stage){
   await new Promise(resolve=>setTimeout(resolve,0));
 }
 addEventListener('error',event=>{canvas.dataset.runtimeError=event.message;});
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+// Scene MSAA lives in the grade target; the canvas only receives one full-screen quad.
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance' });
 installRenderCompatibility(renderer);
 const frameMetrics=new FrameMetrics(renderer);
 renderer.setPixelRatio(Math.min(devicePixelRatio, 1.8));
@@ -201,7 +203,8 @@ renderer.setAnimationLoop(now => {
   const dt = Math.min((now - last) / 1000, .05); last = now;
   window.gameHealth?.phase('gate');
   if(diagnostics)canvas.dataset.framePhase='gate';
-  if (canvas.dataset.ready==='true' && player && (!online||online.session.ready) && !(window.gameHostState?.paused||document.hidden) && !window.gameHostState?.paused&&!window.game?.commerce?.busy) { window.gameHealth?.phase('online');if(diagnostics)canvas.dataset.framePhase='online';online?.update(dt);window.gameHealth?.phase('begin');if(diagnostics)canvas.dataset.framePhase='begin';animals?.beginFrame(); backpack?.beginFrame(); weapons?.beginFrame();window.gameHealth?.phase('player');if(diagnostics)canvas.dataset.framePhase='player'; player.update(dt);window.gameHealth?.phase('gameplay');if(diagnostics){canvas.dataset.playerFrames=String(++playerFrames);canvas.dataset.framePhase='gameplay';} animals?.update(dt); treadmills?.update(dt); plots?.update(dt); pickaxes?.update(dt); weapons?.update(dt); backpack?.update(dt); pasture?.update(dt); merge?.update(dt); indexUI?.update(dt); inventoryUI?.update(dt); shopUI?.update(dt); trails?.update(dt); guards?.update(dt); zoneEntry?.update(); online?.pastureLabels.update();window.game?.leaderboards?.update();window.game?.freeGift?.update(); }
+  // Reconnect keeps local presentation running; Room intents and uploads gate themselves on session.ready.
+  if (canvas.dataset.ready==='true' && player && !(window.gameHostState?.paused||document.hidden) && !window.gameHostState?.paused&&!window.game?.commerce?.busy) { window.gameHealth?.phase('online');if(diagnostics)canvas.dataset.framePhase='online';online?.update(dt);window.gameHealth?.phase('begin');if(diagnostics)canvas.dataset.framePhase='begin';animals?.beginFrame(); backpack?.beginFrame(); weapons?.beginFrame();window.gameHealth?.phase('player');if(diagnostics)canvas.dataset.framePhase='player'; player.update(dt);window.gameHealth?.phase('gameplay');if(diagnostics){canvas.dataset.playerFrames=String(++playerFrames);canvas.dataset.framePhase='gameplay';} setPetAnimationView(camera,scene); animals?.update(dt); treadmills?.update(dt); plots?.update(dt); pickaxes?.update(dt); weapons?.update(dt); backpack?.update(dt); pasture?.update(dt); merge?.update(dt); indexUI?.update(dt); inventoryUI?.update(dt); shopUI?.update(dt); trails?.update(dt); guards?.update(dt); zoneEntry?.update(); online?.pastureLabels.update();window.game?.leaderboards?.update();window.game?.freeGift?.update(); }
   window.game?.chaseFeedback?.update();
   window.gameHealth?.phase('render');
   if(environment)environment.render(camera);else renderer.render(scene,camera);

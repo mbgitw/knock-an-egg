@@ -22,9 +22,9 @@ export class PlayerNames{
       const name=String(profiles.get(id)?.name||'').trim();
       if(v.el.textContent!==name)v.el.textContent=name;
       const root=connection.remote?.actors.get(id)?.root;
-      if(!root||!root.visible||!name){v.el.hidden=true;continue;}
+      if(!root||!root.visible||!name){if(!v.el.hidden)v.el.hidden=true;continue;}
       const distance=game.player.motor.position.distanceTo(root.position);
-      if(distance>NAME_SHOW_DISTANCE){v.el.hidden=true;continue;}
+      if(distance>NAME_SHOW_DISTANCE){if(!v.el.hidden)v.el.hidden=true;continue;}
       this.position.copy(root.position);this.position.y+=PLAYER_HEIGHT+.9;
       this.labels.place(v.el,this.position,2.2,20,1);
     }

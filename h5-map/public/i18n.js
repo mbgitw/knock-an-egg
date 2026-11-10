@@ -1,6 +1,7 @@
 // UI copy only: stable save IDs, player names and protocol fields are untouched.
 const rows=`
 Pasture is full|牧场已满
+Reconnecting…|正在重新连接…
 Finishing the previous connection…|正在结束上一次连接…
 The previous connection is still ending. Please retry shortly.|上一次连接尚未结束，请稍后重试。
 Jump|跳跃

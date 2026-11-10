@@ -1,4 +1,4 @@
-import {createPetModel,updatePetAnimation,disposePetModel} from './pet-animation.js';
+import {createPetModel,updatePetAnimation,disposePetModel} from './pet-culling.js';
 import {variantTemplate} from './animal-variants.js';
 import {animalGlbTemplate} from './animal-glb-runtime.js';
 import {animalVisualScale} from './animal-attributes.js';
@@ -262,6 +262,8 @@ export class EggWorld {
       // Transfer this exact root to the pickup lifecycle. Egg respawns are independent.
       if(this.onPresentationComplete)this.onPresentationComplete(p.egg.pet,p.egg,p);
       else{disposePetModel(p.root);p.root.removeFromParent();this.progress.abandon(p.egg.pet.id);}return false;});this.feedback?.update(dt);
-    if(this.canvas){this.canvas.dataset.eggAmbientInstances=String(this.eggs.filter(e=>e.ambient).length);this.canvas.dataset.eggAmbientParticles=String(this.eggs.reduce((n,e)=>n+(e.ambient?.stats().particles||0),0));this.canvas.dataset.eggCounts=C.zones.map(z=>`${z.zone}:${this.state.zoneEggs(z.zone).filter(e=>e.life.alive).length}`).join(',');this.canvas.dataset.eggGeometryTypes=String(this.templates.size);}
+    // QA counters walk every egg and particle; 4 Hz keeps them current without a per-frame scan.
+    this.statsAge=(this.statsAge??Infinity)+dt;
+    if(this.canvas&&this.statsAge>=.25){this.statsAge=0;this.canvas.dataset.eggAmbientInstances=String(this.eggs.filter(e=>e.ambient).length);this.canvas.dataset.eggAmbientParticles=String(this.eggs.reduce((n,e)=>n+(e.ambient?.stats().particles||0),0));this.canvas.dataset.eggCounts=C.zones.map(z=>`${z.zone}:${this.state.zoneEggs(z.zone).filter(e=>e.life.alive).length}`).join(',');this.canvas.dataset.eggGeometryTypes=String(this.templates.size);}
   }
 }

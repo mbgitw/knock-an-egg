@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {HatchReveal,hatchCrackPose,hatchEggPose} from './growth-hatch-presentation.js';
-import {createPetModel,disposePetModel,updatePetAnimation} from './pet-animation.js';
+import {createPetModel,disposePetModel,updatePetAnimation} from './pet-culling.js';
 import {animalVisualScale} from './animal-attributes.js';
 import {bankPetImage} from './bank-feedback.js';
 import {gameAudio} from './game-audio.js';

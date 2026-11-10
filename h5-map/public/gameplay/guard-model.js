@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import {buildAnimalClip} from '../model-check/animal-animation-player.js';
+import {rigVisible} from './pet-culling.js';
 
-const base='gameplay/guards/';
+const base='gameplay/guards/',GUARD_CULL_PADDING=2;
 const textures=new Map();
 function texture(file, color=false){
   if(!file)return null;
@@ -51,8 +52,13 @@ export function buildGuardModel(data,{loadTextures=true}={}){
       group.add(surface);root.updateMatrixWorld(true);surface.bind(skeleton,mesh.bindMatrix);meshes.push(surface);
     }
   }
+  // Culling was off because three takes a skinned sphere from unposed bones. Pose the
+  // bind frame once and pad for Attack/Run so off-screen guards in other zones skip drawing.
+  root.updateMatrixWorld(true);skeletons.forEach(s=>s.update());
+  for(const mesh of meshes){try{mesh.computeBoundingSphere();const s=mesh.boundingSphere;
+    if(s&&Number.isFinite(s.radius)&&s.radius>1e-4&&s.center.toArray().every(Number.isFinite)){s.radius*=GUARD_CULL_PADDING;mesh.frustumCulled=true;}else mesh.boundingSphere=null;}catch{mesh.boundingSphere=null;}}
   const mixer=new THREE.AnimationMixer(root),actions=new Map();
-  let current=null;
+  let current=null,pending=0;
   return {root,bones,meshes,skeletons,mixer,actions,
     addAction(name,source){actions.set(name,mixer.clipAction(buildAnimalClip(source,{bones})));},
     play(name,rate=1){
@@ -64,7 +70,8 @@ export function buildGuardModel(data,{loadTextures=true}={}){
       }
       next.timeScale=Math.max(.01,rate);
     },
-    update(dt){mixer.update(dt);},
+    // Off-screen guards bank animation time and catch up once visible again.
+    update(dt){if(!rigVisible(root,meshes)){pending+=dt;return;}mixer.update(dt+pending);pending=0;},
     dispose(){mixer.stopAllAction();mixer.uncacheRoot(root);meshes.forEach(m=>{m.geometry.dispose();m.material.dispose();});skeletons.forEach(s=>s.dispose());root.removeFromParent();},
   };
 }

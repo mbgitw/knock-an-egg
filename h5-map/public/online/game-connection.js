@@ -10,6 +10,8 @@ export class GameConnection {
   static async open({timeoutMs=180000}={}){
     const connection=new GameConnection();connection.stage='starting';const started=performance.now();let ready,failed,timer;
     const baseline=new Promise((resolve,reject)=>{ready=resolve;failed=reject;});
+    // Room retries transient save reads itself; a final SAVE_LOAD_FAILED ends the wait instead of the 180 s timeout.
+    connection.failBaseline=code=>failed(Object.assign(Error(code),{code}));
     // Observe baseline rejection immediately, including while transport is connecting.
     baseline.catch(()=>{});
     const deadline=new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('ONLINE_TIMEOUT')),timeoutMs);});
@@ -33,7 +35,7 @@ export class GameConnection {
   emit(type,data){for(const fn of this.listeners)fn(type,data);}
   receive(op,data){
     if(op===OP.SNAPSHOT)this.interactions=data.interactions||0;
-    if(op===OP.RECEIPT&&data.reason==='SAVE_LOAD_FAILED')this.lastCode='SAVE_LOAD_FAILED';
+    if(op===OP.RECEIPT&&data.reason==='SAVE_LOAD_FAILED'){this.lastCode='SAVE_LOAD_FAILED';if(data.final)this.failBaseline?.('SAVE_LOAD_FAILED');}
     if(op===OP.ACCOUNT&&data.changes){if(!this.account)return;let next=JSON.parse(JSON.stringify(this.account));for(const change of data.changes){let target=next;for(const part of change.path.slice(0,-1))target=target[part];const key=change.path.at(-1);if(change.remove)delete target[key];else target[key]=change.value;}data.account=next;}
     if(op===OP.SNAPSHOT){this.guardTime=null;this.self=data.self;this.players=data.players;this.emit('motion-reset');this.emit('players',this.players);}
     // 快照里本人坐标是断线前最后采纳的旧值；Room信任客户端位置，重连后保留本地位置并由下一帧上报覆盖。首次进房由runtime按快照定位，重生走单独position事件。

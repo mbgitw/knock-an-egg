@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {createPetModel,disposePetModel} from './pet-animation.js';
+import {advancePetMixer,createPetModel,disposePetModel} from './pet-culling.js';
 export const pastureModel=(template,name)=>createPetModel(template,name,{height:4,includeOrdinary:true});
 export function freePoint(hitbox,margin=3,random=Math.random){
   return new THREE.Vector3((random()-.5)*Math.max(0,hitbox.size[0]-margin*2),0,(random()-.5)*Math.max(0,hitbox.size[2]-margin*2)).applyMatrix4(new THREE.Matrix4().set(...hitbox.matrix));
@@ -43,7 +43,7 @@ export class PastureMotion {
     const t=Math.min(1,this.age/.7),elastic=t>=1?1:1+2**(-10*t)*Math.sin((t*10-.75)*Math.PI*2/3);
     this.model.scale.copy(this.scale).multiplyScalar(Math.max(.01,.05+.95*elastic));
     const rig=this.model.userData.rig,state=speed?'Walk':'Idle';
-    if(rig){if(this.state!==state){rig.mixer.stopAllAction();rig.actions.get(state)?.reset().play();this.state=state;}rig.mixer.update(dt*(speed>6?1.35:1));}
+    if(rig){if(this.state!==state){rig.mixer.stopAllAction();rig.actions.get(state)?.reset().play();this.state=state;rig.pendingTime=0;}advancePetMixer(this.model,rig,dt*(speed>6?1.35:1));}
   }
   dispose(){if(this.sparks){this.sparks.removeFromParent();this.sparks.geometry.dispose();this.sparks.material.dispose();}disposePetModel(this.model);}
 }

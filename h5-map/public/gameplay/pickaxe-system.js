@@ -1,3 +1,4 @@
+import {assignDataset} from '../dom-diff.js';
 import {gameAudio} from './game-audio.js';
 import * as THREE from 'three';
 import {bindSceneTap} from './scene-tap.js';
@@ -88,7 +89,8 @@ export class PickaxeSystem {
   open(kind){this.externalModal?.close?.();this.modal=kind;this.auto=false;this.clock.cancel();this.player.inputLocked=true;this.player.keys.clear();this.player.touchMove.set(0,0);this.player.touches.clear();this.player.controls.enabled=false;this.el['pickaxe-overlay'].hidden=false;this.el['pickaxe-overlay'].classList.toggle('original-shop',kind==='shop');this.el['pickaxe-panel-title'].classList.toggle('original-fit',kind==='shop');this.el['pickaxe-panel-title'].style.fontSize='';this.el['pickaxe-close'].textContent=kind==='shop'?'X':'×';this.refresh();this.el['pickaxe-close'].focus();if(kind==='shop'){Promise.all([document.fonts.load('800 32px OriginalRubik'),document.fonts.load('900 32px OriginalGotham')]).then(()=>{if(this.modal==='shop')fitShopText(this.el['pickaxe-overlay']);});this.prepareThumbnails();const best=CONFIG.tiers.filter(t=>t.tier>Math.max(...this.progress.data.owned)&&money(t.price)<=money(this.account.data.cash)).at(-1);if(best)this.el['pickaxe-grid'].scrollTo({left:(best.tier-1)*this.el['pickaxe-grid'].clientWidth*.333,behavior:'smooth'});}}
   async prepareThumbnails(){
     if(this.thumbnailJob)return;this.thumbnailJob=true;
-    for(const tier of CONFIG.tiers){try{this.thumbnails.set(tier.tier,await this.assets.thumbnail(tier.tier));this.ui.querySelectorAll(`[data-art="${tier.tier}"]`).forEach(el=>{el.innerHTML=`<img src="${this.thumbnails.get(tier.tier)}" alt="">`;});}catch(e){console.warn('商店预览',tier.tier,e);}}
+    // One preview per frame keeps the shop opening responsive while thumbnails fill in.
+    for(const tier of CONFIG.tiers){await new Promise(resolve=>requestAnimationFrame(()=>resolve()));try{this.thumbnails.set(tier.tier,await this.assets.thumbnail(tier.tier));this.ui.querySelectorAll(`[data-art="${tier.tier}"]`).forEach(el=>{el.innerHTML=`<img src="${this.thumbnails.get(tier.tier)}" alt="">`;});}catch(e){console.warn('商店预览',tier.tier,e);}}
     this.assets.previewRenderer?.dispose();this.assets.previewRenderer=null;
   }
   art(tier){return `<span data-art="${tier}">${this.thumbnails.has(tier)?`<img src="${this.thumbnails.get(tier)}" alt="">`:pickIcon}</span>`;}
@@ -200,7 +202,7 @@ export class PickaxeSystem {
     if(this.feedbackUntil<this.clock.time)this.el['pickaxe-feedback'].textContent='';
     const uiLocked=!!this.modal||!!this.externalModal||!!this.weapons?.busy;
     if(this.lastCash!==this.account.data.cash||this.lastTraining!==!!this.player.training||this.lastUILocked!==uiLocked||this.lastAuto!==this.auto){this.lastCash=this.account.data.cash;this.lastTraining=!!this.player.training;this.lastUILocked=uiLocked;this.lastAuto=this.auto;this.refresh();}
-    Object.assign(this.canvas.dataset,{pickaxeTier:String(this.progress.data.equipped||0),pickaxeBusy:String(this.busy),swingCount:String(this.clock.id),hitCount:String(this.hitCount),eggTarget:target?.spec.id||'',eggHp:String(target?.life.hp??''),petCount:String(this.progress.data.pets.length),pickaxeModal:this.modal||''});
+    assignDataset(this.canvas,{pickaxeTier:String(this.progress.data.equipped||0),pickaxeBusy:String(this.busy),swingCount:String(this.clock.id),hitCount:String(this.hitCount),eggTarget:target?.spec.id||'',eggHp:String(target?.life.hp??''),petCount:String(this.progress.data.pets.length),pickaxeModal:this.modal||''});
   }
   screen(position){const p=position.clone().project(this.camera);return {x:(p.x*.5+.5)*innerWidth,y:(-.5*p.y+.5)*innerHeight,visible:p.z>-1&&p.z<1&&Math.abs(p.x)<1.2&&Math.abs(p.y)<1.2};}
   showHealth(egg){const el=this.el['egg-health'];if(!egg||this.modal){el.hidden=true;return;}const p=this.screen(egg.center.clone().add(new THREE.Vector3(0,egg.spec.size[1]*.65,0)));el.hidden=!p.visible;el.style.transform=`translate(${p.x}px,${p.y}px) translate(-50%,-100%)`;el.querySelector('strong').textContent=egg.root.name;el.querySelector('i').style.width=`${egg.life.hp/egg.spec.health*100}%`;el.querySelector('small').textContent=`${egg.life.hp} / ${egg.spec.health}`;}

@@ -45,10 +45,39 @@ test('Room derived caches preserve checkpoint state and random sequence across 1
  for(let i=0;i<100;i++){
    for(const instance of [cached,restored]){for(const p of Object.values(instance.room.state.players))p.lastMove=instance.room.state.elapsed;instance.room.onTick(100);}
    // A migrated Room has no in-memory derived objects. Simulate that on every tick.
-   restored.room.clearDerivedState();
-   if(i%10===9){assert.deepEqual(JSON.parse(JSON.stringify(cached.room.state)),JSON.parse(JSON.stringify(restored.room.state)));assert.equal(cached.seed(),restored.seed());}
+   // Migration always checkpoints first; live guards serialize there rather than every tick.
+   restored.room.syncGuards();restored.room.clearDerivedState();
+   if(i%10===9){cached.room.syncGuards();assert.deepEqual(JSON.parse(JSON.stringify(cached.room.state)),JSON.parse(JSON.stringify(restored.room.state)));assert.equal(cached.seed(),restored.seed());}
  }
 });
 test('authoritative room close clears readiness and retains its stable error for recovery UI',async()=>{
  const {PastureSession}=await import('../public/online/session.js');const events=new Map();let status;const s=new PastureSession({socket:{on:(name,fn)=>{events.set(name,fn);return()=>{};}},onStatus:x=>status=x});s.room={roomId:'r'};s.ready=true;s.baseline.add(101);s.pending={id:1};events.get('roomClosed')({roomId:'r',reason:'failed',errorCode:'ROOM_RESOURCE_BUDGET_EXCEEDED'});assert.equal(s.ready,false);assert.equal(s.room,null);assert.equal(s.baseline.size,0);assert.equal(s.pending,null);assert.equal(status.code,'ROOM_RESOURCE_BUDGET_EXCEEDED');assert.equal(s.lastClose.code,status.code);assert.equal(s.stage,'idle');
+});
+test('transient save read failures retry from the tick; only exhaustion or corruption is final',()=>{
+ const run=(failures,value)=>{const room=new PastureRoom();room.state=createWorld();const eggs=createEggEngine(()=>.5,()=>{});eggs.initialize(null,0);room.state.eggs=[...eggs.slots.values()];
+  const sent=[];let reads=0;room.random=()=>.5;room.unixTimeMillis=()=>1000n;room.log=()=>{};room.sendToUserJson=(id,op,data)=>sent.push({op,data});room.sendToUserOn=()=>{};room.broadcastJson=()=>{};room.save=()=>{};
+  room.cloudLoadSnapshot=(_id,fn)=>{reads++;fn(reads<=failures?{status:'unavailable'}:{status:'ready',entries:value?[{key:'pasture_account_v1',live:true,value:{kind:'string',value}}]:[]});};
+  room.onJoin({userId:'p',seatId:'s'});for(let i=0;i<400&&!room.state.players.p.loaded;i++)room.onTick(100);
+  return {p:room.state.players.p,reads,fails:sent.filter(m=>m.data?.reason==='SAVE_LOAD_FAILED')};};
+ const recovered=run(3);assert.equal(recovered.p.loaded,true);assert.equal(recovered.reads,4);assert.equal(recovered.fails.length,0);
+ const exhausted=run(99);assert.equal(exhausted.p.loaded,false);assert.equal(exhausted.reads,6);assert.deepEqual(exhausted.fails.map(m=>m.data.final),[true]);
+ const corrupt=run(0,'{not json');assert.equal(corrupt.reads,1);assert.deepEqual(corrupt.fails.map(m=>m.data.final),[true]);
+});
+test('profile and pasture broadcasts skip unchanged payloads; baselines still send',()=>{
+ const room=new PastureRoom();room.state=createWorld();const a=join(room.state,'a','a'),b=join(room.state,'b','b');for(const p of [a,b])p.loaded=p.connected=true;
+ const sent=[];room.broadcastJson=(op,data)=>sent.push({op,data,to:'*'});room.sendToUserJson=(id,op,data)=>sent.push({op,data,to:id});
+ room.profiles();a.position={...a.position,x:a.position.x+5};room.profiles();assert.equal(sent.length,1,'movement alone does not rebroadcast profiles');
+ a.account.plot.level++;room.profiles();assert.equal(sent.length,2);
+ sent.length=0;room.pasture(a);room.pasture(a);assert.equal(sent.length,2,'one pasture to each player, not repeated');
+ room.pasture(a,'b');assert.equal(sent.length,3,'targeted baseline always sends');
+ room.onLeave({userId:'a',seatId:'a'});sent.length=0;const again=join(room.state,'a','a');again.loaded=again.connected=true;room.pasture(again);assert.ok(sent.some(m=>m.to==='b'),'a rejoining owner is broadcast again');
+});
+test('a lost receipt keeps movement flowing and the intent retrying',async()=>{
+ const {PastureSession}=await import('../public/online/session.js');let now=0;const sent=[];
+ const s=new PastureSession({socket:{on:()=>()=>{}},now:()=>now});
+ s.room={roomId:'r',sendControl:(op,b)=>sent.push(op),sendReliable:(op)=>sent.push(op),sendUnreliable:(op)=>sent.push(op)};s.ready=true;s.stage='room_connected';s.motionEpoch=0;
+ assert.equal(s.intent('treadmill-unlock',1),true);
+ for(let t=0;t<20000;t+=100){now=t;s.update({x:t/100,y:0,z:0,yaw:0,flags:0});}
+ assert.equal(s.stage,'room_connected');assert.ok(s.pending,'pending intent kept for idempotent retry');
+ assert.ok(sent.filter(op=>op===2).length>=6,'intent keeps retrying');assert.ok(sent.filter(op=>op===1||op===8).length>10,'movement still uploads');
 });

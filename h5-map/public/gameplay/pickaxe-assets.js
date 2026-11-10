@@ -34,7 +34,10 @@ export class PickaxeAssets {
       const light=new THREE.DirectionalLight(0xffffff,3);light.position.set(3,5,8);scene.add(light);
       const size=model.bounds.getSize(new THREE.Vector3()).length();model.root.position.copy(model.bounds.getCenter(new THREE.Vector3())).negate();scene.add(model.root);
       const camera=new THREE.PerspectiveCamera(32,1,.01,size*20);camera.position.set(size*.35,size*.12,-size*1.85);camera.lookAt(0,0,0);
-      renderer.render(scene,camera);return renderer.domElement.toDataURL('image/png');
+      renderer.render(scene,camera);
+      // toBlob encodes off the main thread; toDataURL stalled the frame that opened the shop.
+      const blob=await new Promise(resolve=>renderer.domElement.toBlob(resolve,'image/png'));
+      return blob?URL.createObjectURL(blob):renderer.domElement.toDataURL('image/png');
     }finally{model.dispose();}
   }
 }

@@ -21,7 +21,9 @@ export async function createEnvironment(renderer, scene) {
   renderer.toneMappingExposure=1;
 
   const grade=source.children.find(c=>c.className==='ColorCorrectionEffect'&&c.properties.Enabled).properties;
-  const target=new THREE.WebGLRenderTarget(1,1,{type:floatColor?THREE.HalfFloatType:THREE.UnsignedByteType,depthBuffer:true,samples:compatibleRenderSamples(gl,floatColor?gl.RGBA16F:gl.RGBA8,Math.min(4,renderer.capabilities.maxSamples))});
+  // The grade clamps to 0..1, so float range is unused. sRGB8 storage keeps dark
+  // gradients smooth at half the bytes of RGBA16F; blending still happens in linear.
+  const target=new THREE.WebGLRenderTarget(1,1,{type:THREE.UnsignedByteType,colorSpace:THREE.SRGBColorSpace,depthBuffer:true,samples:compatibleRenderSamples(gl,gl.SRGB8_ALPHA8,Math.min(4,renderer.capabilities.maxSamples))});
   const material=new THREE.ShaderMaterial({
     depthTest:false,depthWrite:false,toneMapped:false,
     uniforms:{image:{value:target.texture},contrast:{value:grade.Contrast},saturation:{value:grade.Saturation},tint:{value:new THREE.Vector3(...grade.TintColor)}},
